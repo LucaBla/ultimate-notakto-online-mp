@@ -1,0 +1,291 @@
+import player from './player.js';
+import gameBoard from './gameBoard.js';
+import displayController from './displayController.js';
+
+const gameMaster = (() => {
+  let activePlayer = null;
+  let startingPlayer = null;
+
+  let player1 = player(1);
+  let player2 = player(2);
+
+  let humanRoundPlayed = false;
+
+  const start = (values) =>{
+    let cells = Array.from(document.getElementsByClassName('cell'));
+
+    cells.forEach(element => element.innerHTML = '');
+
+    gameBoard.resetBoard();
+    gameBoard.playableSubBoard = null;
+
+    startingPlayer = setStartingPlayer(values['starter']);
+    setGameMode(values['gamemode']);
+
+    displayController.showActivePlayerLabel();
+    displayController.hideWave();
+    displayController.reloadActivePlayerLabel(activePlayer.playerNumber);
+    displayController.removeGameOverScreen();
+    displayController.removeSubBoardBorders();
+
+    document.getElementsByTagName('audio')[0].pause();
+    document.getElementsByTagName('audio')[0].src = './audio/Dreaming.mp3';
+    document.getElementsByTagName('audio')[0].play();
+  };
+
+  const end = () =>{
+    let cells = Array.from(document.getElementsByClassName('cell'));
+
+    displayController.showGameOverScreen(activePlayer);
+
+    cells.forEach(element => element.removeEventListener('click', gameMaster.playRound));
+    cells.forEach(element => element.removeEventListener('click', gameMaster.playHumanVSBotRound));
+  };
+
+  const setStartingPlayer = (starter) =>{
+    if(starter === 'random'){
+      starter = Math.floor(Math.random() * (2 - 1 + 1)) + 1;
+      starter = starter.toString();
+    }
+    if(starter === '1'){
+      activePlayer = player1;
+    }
+    else if(starter === '2'){
+      activePlayer = player2;
+    }
+
+    return starter;
+  };
+
+  const setGameMode = (gamemode) =>{
+    let cells = Array.from(document.getElementsByClassName('cell'));
+
+    if(gamemode === 'Player vs Player'){
+      cells.forEach(element => element.addEventListener('click', gameMaster.playRound));
+    }
+    else if(gamemode === 'Player vs Bot'){
+      if(startingPlayer === '2'){
+        playBotRoundVSHuman();
+      }
+      else{
+        cells.forEach(element => element.addEventListener('click', gameMaster.playHumanVSBotRound));
+      }
+    }
+    else{
+      playBotVSBotRound();
+    }
+  };
+
+  const findCellsSubBoard = (evt) => {
+    const col = evt.currentTarget.parentElement.parentElement
+                      .classList[evt.currentTarget.parentElement.parentElement.classList.length - 1]
+                      .slice(-1);
+    const row = evt.currentTarget.parentElement.parentElement.parentElement
+                      .classList[evt.currentTarget.parentElement.parentElement.parentElement.classList.length - 1]
+                      .slice(-1);
+    
+    return gameBoard.findSubBoard(row, col);
+  };
+
+  const changeActivePlayer = () => {
+    if (player1 === activePlayer){
+      activePlayer = player2;
+    }
+    else{
+      activePlayer = player1;
+    }
+    displayController.reloadActivePlayerLabel(activePlayer.playerNumber);
+  };
+
+  const addPieceToArr = (subBoard, evt) =>{
+    const col = evt.currentTarget.classList[evt.currentTarget.classList.length - 1].slice(-1);
+    const row = evt.currentTarget.parentElement.classList[evt.currentTarget.parentElement
+                   .classList.length - 1].slice(-1);
+    
+    if (subBoard.board[row][col] === '-'){
+      subBoard.addPiece(row, col)
+    }else{
+      throw 'cant play already played field.';
+    }
+
+  };
+
+  const isSubBoardLost = (subBoard, evt) =>{
+    if(subBoard.threeInARow() || subBoard.threeInACol() || subBoard.threeInADiag()){
+      subBoard.lost = true;
+      displayController.closeSubBoard(evt);
+    }
+  };
+
+  const setPlayableBoard = (evt) => {
+    const col = evt.currentTarget.classList[evt.currentTarget.classList.length - 1].slice(-1);
+    const row = evt.currentTarget.parentElement.classList[evt.currentTarget.parentElement
+                   .classList.length - 1].slice(-1);
+    if (gameBoard.board[row][col].lost === true){
+      return null;
+    }
+    else{
+      return gameBoard.board[row][col];
+    }
+  };
+
+  const playRound = (evt) =>{
+    let playedBoard = findCellsSubBoard(evt);
+
+    if(!gameBoard.illegalMove(playedBoard)){
+      addPieceToArr(playedBoard, evt);
+      displayController.addPieceToHTML(evt.currentTarget);
+      isSubBoardLost(playedBoard, evt);
+      gameBoard.playableSubBoard = setPlayableBoard(evt);
+      displayController.removePlayableBoard();
+      displayController.showPlayableBoard(evt.currentTarget.parentElement.classList[evt.currentTarget.parentElement
+        .classList.length - 1].slice(-1), evt.currentTarget.classList[evt.currentTarget.classList.length - 1].slice(-1));
+      
+      changeActivePlayer();
+      
+      if(gameBoard.isGameOver()){
+        end();
+
+        return ;
+      }
+    }
+  };
+
+  const playHumanVSBotRound = async (evt) =>{
+    let cells = Array.from(document.getElementsByClassName('cell'));
+
+    playRound(evt);
+
+    cells.forEach(element => element.removeEventListener('click', gameMaster.playHumanVSBotRound));
+
+    if(gameBoard.isGameOver() === false){
+      playBotRoundVSHuman();
+    }
+  };
+
+  const playBotVSBotRound = async () =>{
+    let cells = Array.from(document.getElementsByClassName('cell'));
+
+    await new Promise(resolve => setTimeout(resolve, 1200));
+    cells.forEach(element => element.addEventListener('click', gameMaster.playRound));
+    playBotRound();
+    cells.forEach(element => element.removeEventListener('click', gameMaster.playRound));
+
+    if(gameBoard.isGameOver() === false){
+      await new Promise(resolve => setTimeout(resolve, 1200));
+      cells.forEach(element => element.addEventListener('click', gameMaster.playRound));
+      playBotRound();
+      cells.forEach(element => element.removeEventListener('click', gameMaster.playRound));
+
+      if(gameBoard.isGameOver() === false){
+        playBotVSBotRound();
+      }
+    }
+  }
+
+  const playBotRoundVSHuman = async () =>{
+    let cells = Array.from(document.getElementsByClassName('cell'));
+
+    await new Promise(resolve => setTimeout(resolve, 800));
+
+    cells.forEach(element => element.addEventListener('click', gameMaster.playRound));
+
+    playBotRound();
+
+    let playableCells = getHumanAllowedCells();
+
+    cells.forEach(element => element.removeEventListener('click', gameMaster.playRound));
+
+    if(!gameBoard.isGameOver()){
+      playableCells.forEach(element => element.addEventListener('click', gameMaster.playHumanVSBotRound));
+    }
+  };
+
+  const playBotRound = () => {
+
+    let allowedBoards = getBotAllowedBoards();
+
+    let playedBoardArr = allowedBoards[Math.floor(Math.random()*allowedBoards.length)];
+
+    let allowedCells = getBotAllowedCell(gameBoard.findSubBoard(playedBoardArr[0], playedBoardArr[1]));
+
+    let playedCell = allowedCells[Math.floor(Math.random()*allowedCells.length)];
+
+    let bRow = 'b-row-' + playedBoardArr[0];
+    let sBoard = 'sub-board-' + playedBoardArr[1];
+    
+    let row = 'row-' + playedCell[0];
+    let cell = 'cell-' + playedCell[1];
+
+    let targetCell = document.getElementsByClassName(bRow)[0].getElementsByClassName(sBoard)[0]
+                             .getElementsByClassName(row)[0].getElementsByClassName(cell)[0];
+
+
+    humanRoundPlayed = false;
+
+    targetCell.click();
+  };
+
+  const getHumanAllowedCells = () =>{
+    let playableBoards = Array.from(document.getElementsByClassName('playable'));
+    let playableCells = [];
+
+    if(playableBoards.length === 0){
+      playableCells = cells;
+    }
+    else{
+      for(const i in playableBoards){
+        for( const j of playableBoards[i].getElementsByClassName('cell')){
+          playableCells.push(j);
+        }
+      }
+    }
+    return playableCells;
+  };
+
+  const getBotAllowedBoards =() => {
+    let allowedBoards = [];
+
+    if(gameBoard.playableSubBoard === null){
+      for(const row of gameBoard.board){
+        for(const sB of row){
+          if(sB.lost === false){
+            allowedBoards.push([gameBoard.board.indexOf(row), row.indexOf(sB)]);
+          }
+        }
+      }
+    }
+    else{
+      outer_loop: 
+      for(const row of gameBoard.board){
+        for(const sB of row){
+          if(sB === gameBoard.playableSubBoard){
+            allowedBoards.push([gameBoard.board.indexOf(row), row.indexOf(sB)]);
+            break outer_loop;
+          }
+        }
+      }
+    }
+
+    return allowedBoards;
+  };
+
+  const getBotAllowedCell = (playedBoard) =>{
+    let allowedCells = [];
+
+    for(const row of playedBoard.board){
+      for(const cellIndex in row){
+        if(row[cellIndex] === '-'){
+          allowedCells.push([playedBoard.board.indexOf(row), parseInt(cellIndex)]);
+        }
+      }
+    }
+    return allowedCells;
+  };
+
+  return{
+    start, playRound, playHumanVSBotRound, playBotRoundVSHuman, playBotVSBotRound, playBotRound
+  };
+})();
+
+export default gameMaster;

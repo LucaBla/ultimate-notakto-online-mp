@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#3A3042" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+  <%= stylesheet_link_tag "style" %>
+
+  <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+
+  <script src="https://kit.fontawesome.com/5ed27ce724.js" crossorigin="anonymous"></script>
+
+  <title>Ultimate Notakto</title>
+  </head>
+<body>
+  <header>
+    <div class="title animate__animated hidden animate__delay-1s">
+      <h1>Ultimate Notakto</h1>
+      <%= image_tag('logo.svg') %>
+    </div>
+    <div class="slider-wrapper">
+      <i class="fas fa-volume-up"></i>
+      <input type="range" min="0" max="100" value="50" class="slider vol">
+    </div>
+  </header>
+  <main>
+    <div class="active-player-label">
+      
+    </div>
+    <div class="board board">
+      <div class="b-row b-row-0">
+        <div class="sub-board ph sub-board-0">
+          <div class="row row-0">
+            <div class="cell cell-0">
+              
+            </div>
+            <div class="cell cell-middle cell-1">
+              
+            </div>
+            <div class="cell cell-2">
+              
+            </div>
+          </div>
+          <div class="row row-1">
+            <div class="cell cell-0">
+              
+            </div>
+            <div class="cell cell-middle cell-1">
+              
+            </div>
+            <div class="cell cell-2">
+              
+            </div>
+          </div>
+          <div class="row row-2">
+            <div class="cell cell-0">
+              
+            </div>
+            <div class="cell cell-middle cell-1">
+              
+            </div>
+            <div class="cell cell-2">
+              
+            </div>
+          </div>
+        </div>
+        <div class="sub-board ph sub-board-1">
+          <div class="row row-0">
+            <div class="cell cell-0">
+              
+            </div>
+            <div class="cell cell-middle cell-1">
+              
+            </div>
+            <div class="cell cell-2">
+              
+            </div>
+          </div>
+          <div class="row row-1">
+            <div class="cell cell-0">
+              
+            </div>
+            <div class="cell cell-middle cell-1">
+              
+            </div>
+            <div class="cell cell-2">
+              
+            </div>
+          </div>
+          <div class="row row-2">
+            <div class="cell cell-0">
+              
+            </div>
+            <div class="cell cell-middle cell-1">
+              
+            </div>
+            <div class="cell cell-2">
+              
+            </div>
+          </div>
+        </div>
+        <div class="sub-board ph sub-board-2">
+          <div class="row row-0">
+            <div class="cell cell-0">
+              
+            </div>
+            <div class="cell cell-middle cell-1">
+              
+            </div>
+            <div class="cell cell-2">
+              
+            </div>
+          </div>
+          <div class="row row-1">
+            <div class="cell cell-0">
+              
+            </div>
+            <div class="cell cell-middle cell-1">
+              
+            </div>
+            <div class="cell cell-2">
+              
+            </div>
+          </div>
+          <div class="row row-2">
+            <div class="cell cell-0">
+              
+            </div>
+            <div class="cell cell-middle cell-1">
+              
+            </div>
+            <div class="cell cell-2">
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="b-row b-row-1">
+        <div class="sub-board ph sub-board-0">
+          <div class="row row-0">
+            <div class="cell cell-0">
+              
+            </div>
+            <div class="cell cell-middle cell-1">
+              
+            </div>
+            <div class="cell cell-2">
+              
+            </div>
+          </div>
+          <div class="row row-1">
+            <div class="cell cell-0">
+              
+            </div>
+            <div class="cell cell-middle cell-1">
+              
+            </div>
+            <div class="cell cell-2">
+              
+            </div>
+          </div>
+          <div class="row row-2">
+            <div class="cell cell-0">
+              
+            </div>
+            <div class="cell cell-middle cell-1">
+              
+            </div>
+            <div class="cell cell-2">
+              
+            </div>
+          </div>
+        </div>
+        <div class="sub-board ph sub-board-1">
+          <div class="row row-0">
+            <div class="cell cell-0">
+              
+            </div>
+            <div class="cell cell-middle cell-1">
+              
+            </div>
+            <div class="cell cell-2">
+              
+            </div>
+          </div>
+          <div class="row row-1">
+            <div class="cell cell-0">
+              
+            </div>
+            <div class="cell cell-middle cell-1">
+              
+            </div>
+            <div class="cell cell-2">
+              
+            </div>
+          </div>
+          <div class="row row-2">
+            <div class="cell cell-0">
+              
+            </div>
+            <div class="cell cell-middle cell-1">
+              
+            </div>
+            <div class="cell cell-2">
+              
+            </div>
+          </div>
+        </div>
+        <div class="sub-board ph sub-board-2">
+          <div class="row row-0">
+            <div class="cell cell-0">
+              
+            </div>
+            <div class="cell cell-middle cell-1">
+              
+            </div>
+            <div class="cell cell-2">
+              
+            </div>
+          </div>
+          <div class="row row-1">
+            <div class="cell cell-0">
+              
+            </div>
+            <div class="cell cell-middle cell-1">
+              
+            </div>
+            <div class="cell cell-2">
+              
+            </div>
+          </div>
+          <div class="row row-2">
+            <div class="cell cell-0">
+              
+            </div>
+            <div class="cell cell-middle cell-1">
+              
+            </div>
+            <div class="cell cell-2">
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="b-row b-row-2">
+        <div class="sub-board ph sub-board-0">
+          <div class="row row-0">
+            <div class="cell cell-0">
+              
+            </div>
+            <div class="cell cell-middle cell-1">
+              
+            </div>
+            <div class="cell cell-2">
+              
+            </div>
+          </div>
+          <div class="row row-1">
+            <div class="cell cell-0">
+              
+            </div>
+            <div class="cell cell-middle cell-1">
+              
+            </div>
+            <div class="cell cell-2">
+              
+            </div>
+          </div>
+          <div class="row row-2">
+            <div class="cell cell-0">
+              
+            </div>
+            <div class="cell cell-middle cell-1">
+              
+            </div>
+            <div class="cell cell-2">
+              
+            </div>
+          </div>
+        </div>
+        <div class="sub-board ph sub-board-1">
+          <div class="row row-0">
+            <div class="cell cell-0">
+              
+            </div>
+            <div class="cell cell-middle cell-1">
+              
+            </div>
+            <div class="cell cell-2">
+              
+            </div>
+          </div>
+          <div class="row row-1">
+            <div class="cell cell-0">
+              
+            </div>
+            <div class="cell cell-middle cell-1">
+              
+            </div>
+            <div class="cell cell-2">
+              
+            </div>
+          </div>
+          <div class="row row-2">
+            <div class="cell cell-0">
+              
+            </div>
+            <div class="cell cell-middle cell-1">
+              
+            </div>
+            <div class="cell cell-2">
+              
+            </div>
+          </div>
+        </div>
+        <div class="sub-board ph sub-board-2">
+          <div class="row row-0">
+            <div class="cell cell-0">
+              
+            </div>
+            <div class="cell cell-middle cell-1">
+              
+            </div>
+            <div class="cell cell-2">
+              
+            </div>
+          </div>
+          <div class="row row-1">
+            <div class="cell cell-0">
+              
+            </div>
+            <div class="cell cell-middle cell-1">
+              
+            </div>
+            <div class="cell cell-2">
+              
+            </div>
+          </div>
+          <div class="row row-2">
+            <div class="cell cell-0">
+              
+            </div>
+            <div class="cell cell-middle cell-1">
+              
+            </div>
+            <div class="cell cell-2">
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div class="menu">
+    <div class="buttons">
+      <button class="play-btn">Play</button>
+      <button class="rules-btn">Rules</button>
+    </div>
+  </div>
+  <%= audio_tag "Solve_The_Puzzle.mp3", loop: true %>
+  <template>
+    <div class="x">
+      <svg width="30" height="30" viewBox="0 0 173 206" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_1_2)">
+        <path d="M1 1L170.197 206.252" stroke="#D9D9D9" stroke-width="15" stroke-linecap="round"/>
+        <path d="M0 206.066L172.91 -5.30481e-06" stroke="#D9D9D9" stroke-width="15" stroke-linecap="round"/>
+        </g>
+        <defs>
+        <clipPath id="clip0_1_2">
+        <rect width="173" height="206" fill="white"/>
+        </clipPath>
+        </defs>
+      </svg>
+    </div>
+  </template>
+</body>
+  <% javascript_path 'confetti' %>
+  <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+  <script>
+    kofiWidgetOverlay.draw('lucablazevic', {
+      'type': 'floating-chat',
+      'floating-chat.donateButton.text': 'Support me',
+      'floating-chat.donateButton.background-color': '#008DD5',
+      'floating-chat.donateButton.text-color': '#D9D9D9'
+    });
+  </script>
+</html>
