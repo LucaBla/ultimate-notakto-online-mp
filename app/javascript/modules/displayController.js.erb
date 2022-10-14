@@ -1,6 +1,7 @@
 import * as Music from './music.js';
 import gameBoard from './gameBoard.js';
 import gameMaster from './gameMaster.js';
+import {startConfetti, stopConfetti} from '../confetti/confetti.js';
 
 const displayController = (() => {
 
@@ -89,7 +90,7 @@ const displayController = (() => {
 
   const showGameOverScreen = (winner) => {
     document.getElementsByTagName('audio')[0].pause();
-    document.getElementsByTagName('audio')[0].src = './audio/Chiptronical.mp3';
+    document.getElementsByTagName('audio')[0].src = '<%= asset_path("Chiptronical.mp3") %>';
     document.getElementsByTagName('audio')[0].play();
 
     document.getElementsByTagName('main')[0].classList.remove('slide-down-main');

@@ -81,4 +81,4 @@ function openMusicModal(){
   modal.appendChild(buttonsWrapper);
 }
 
-export {createModal, openMusicModal, closeModal};
+export {createModal, openMusicModal, closeModal, animateTitle};

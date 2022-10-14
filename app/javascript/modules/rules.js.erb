@@ -23,7 +23,7 @@ function populateRules(modal){
 
   header.textContent = 'Notakto Rules'
 
-  img.src = "/assets/gifs/video_rules_1.gif";
+  img.src = '<%= asset_path("gifs/video_rules_1.gif") %>';
   img.classList.add('rules-img', '1');
 
   textRulesBtn.innerHTML = '<i class="far fa-file-alt"></i>';
@@ -122,7 +122,7 @@ function nextRule(){
 }
 
 function fetchRules(){
-  fetch('/assets/rules.txt')
+  fetch('<%= asset_path("rules.txt") %>')
   .then((resp) => resp.text())
   .then(data => {
     document.getElementsByClassName('text-rules')[0].innerHTML = data;

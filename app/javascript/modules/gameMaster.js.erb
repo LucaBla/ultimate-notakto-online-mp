@@ -29,7 +29,7 @@ const gameMaster = (() => {
     displayController.removeSubBoardBorders();
 
     document.getElementsByTagName('audio')[0].pause();
-    document.getElementsByTagName('audio')[0].src = './audio/Dreaming.mp3';
+    document.getElementsByTagName('audio')[0].src = '<%= asset_path("Dreaming.mp3") %>';
     document.getElementsByTagName('audio')[0].play();
   };
 

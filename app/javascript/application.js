@@ -11,7 +11,14 @@ document.getElementsByClassName("play-btn")[0].addEventListener('click', GameSet
 document.getElementsByClassName("rules-btn")[0].addEventListener('click', Rules.openRules);
 document.getElementsByClassName("vol")[0].addEventListener("input", Music.setVol);
 
-ModalManager.openMusicModal();
+if (window.location.pathname === '/'){
+  ModalManager.openMusicModal();
+}
+else{
+  GameSettings.openMPModal();
+  document.getElementsByTagName('audio')[0].play();
+  document.getElementsByClassName('menu')[0].getElementsByClassName('buttons')[0].style.display = 'none';
+}
 changeMobileWidget();
 
 async function changeMobileWidget(){
@@ -34,4 +41,4 @@ async function changeMobileWidget(){
   document.getElementsByClassName('floatingchat-container-mobi')[0].style.width = '50px';
 
   document.getElementsByClassName('floatingchat-container-wrap-mobi')[0].style.width = '50px';
-}
+}import "channels"

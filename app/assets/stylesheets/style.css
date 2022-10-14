@@ -12,7 +12,7 @@
 
 @font-face{
   font-family: 'clip';
-  src: url('/assets/Clip.ttf');
+  src: url('Clip.ttf');
 }
 
 
@@ -72,6 +72,10 @@ h2{
 header svg{
   width: 100vw;
   max-height: 200px;
+}
+
+header a{
+  text-decoration: none;
 }
 
 header h1{
@@ -356,6 +360,27 @@ margin-right: 35px;
   margin-right: 20px;
   width: 100px;
   margin: 0 auto;
+}
+
+.or{
+  margin: 10px 0px;
+  justify-content: center !important;
+  margin-bottom: 10px !important;
+}
+
+.modal form form{
+  display: flex;
+  justify-content: center;
+}
+
+.modal form form button{
+  color: var(--gainsboro);
+  background-color: var(--blue);
+  border-radius: 8px;
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  font-size: 20px;
 }
 
 .rules-img{
