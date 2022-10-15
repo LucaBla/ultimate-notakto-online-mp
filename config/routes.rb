@@ -6,4 +6,7 @@ Rails.application.routes.draw do
   root 'static_pages#home'
 
   resources :rooms, only: [:show, :new, :create]
+
+  resources :pieces, only: [:create, :new]
+  # mount ActionCable.server => '/cable'
 end

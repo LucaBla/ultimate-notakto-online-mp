@@ -1,0 +1,5 @@
+<div class="sub-board ph sub-board-<%= index %>">
+  <% sub_board.rows.each_with_index do |row, index|%>
+    <%= render 'boards/row', index: index, row: row %>
+  <%end%>
+</div>

@@ -1,0 +1,5 @@
+<div class="b-row b-row-<%= index %>">
+  <% b_row.sub_boards.each_with_index do |sub_board, index|%>
+    <%= render 'boards/sub_board', index: index, sub_board: sub_board %>
+  <%end%>
+</div>

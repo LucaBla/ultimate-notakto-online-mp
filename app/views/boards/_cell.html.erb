@@ -1,0 +1,7 @@
+<div class="cell <%='cell-middle' if index == 1%> cell-<%=index%>">
+  <%if cell.piece == nil%>
+    <%= render 'boards/form', cell: cell %>
+  <%else%>
+    <%= render 'boards/piece' %>
+  <%end%>
+</div>
