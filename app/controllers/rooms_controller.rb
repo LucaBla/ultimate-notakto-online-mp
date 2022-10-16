@@ -1,9 +1,8 @@
+#require 'redis'
 class RoomsController < ApplicationController
   def show
     @room = Room.find(params[:id])
     RoomChannel.broadcast_to(@room, 'test')
-
-    @piece = Piece.new
   end
 
   def new
@@ -13,6 +12,8 @@ class RoomsController < ApplicationController
   def create
     @room = Room.new
     @room.board = @room.build_board
+
+    @board = @room.board
 
     @room.board.b_rows.build([{}, {}, {}])
 

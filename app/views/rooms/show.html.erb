@@ -34,7 +34,9 @@
     <div class="active-player-label">
       
     </div>
-    <%= render @room.board%>
+    <%= Redis.new.pubsub("channels", "action_cable/*") %>
+    <%= turbo_stream_from dom_id(@room.board) %>
+    <%= render @room.board, room: @room%>
   </main>
   <div class="menu">
     <div class="buttons">

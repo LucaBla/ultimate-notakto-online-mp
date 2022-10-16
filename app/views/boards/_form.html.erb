@@ -1,5 +1,4 @@
-<%= form_with model: @piece do |form|%>
+<%= form_with model: piece do |form|%>
   <%= form.hidden_field :cell, value: cell.id %>
   <%= form.submit 'Set x'%>
-  <%= cell.id %>
 <%end%>
