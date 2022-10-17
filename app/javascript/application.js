@@ -15,7 +15,8 @@ if (window.location.pathname === '/'){
   ModalManager.openMusicModal();
 }
 else{
-  GameSettings.openMPModal();
+  //GameSettings.openMPModal();
+  console.log(document.getElementsByTagName('input')[0]);
   document.getElementsByTagName('audio')[0].play();
   document.getElementsByClassName('menu')[0].getElementsByClassName('buttons')[0].style.display = 'none';
 }

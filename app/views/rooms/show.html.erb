@@ -18,6 +18,13 @@
   <title>Ultimate Notakto</title>
   </head>
 <body>
+  <% if @room.adjusted == false %>
+    <% if current_user.id == @room.player1 %>
+      <%=render 'rooms/form' %>
+    <% else %>
+      <%= render 'rooms/wait' %>
+    <%end%>
+  <%end%>
   <header>
     <div class="title animate__animated hidden animate__delay-1s">
       <%=link_to root_path, data: {turbo: false} do%>
@@ -34,9 +41,10 @@
     <div class="active-player-label">
       
     </div>
-    <%= Redis.new.pubsub("channels", "action_cable/*") %>
-    <%= turbo_stream_from dom_id(@room.board) %>
-    <%= render @room.board, room: @room%>
+    <%# turbo_stream_from dom_id(@room.board) %>
+    <div class="board-wrapper" data-room-id="<%=@room.try(:id)%>">
+      <%= render @room.board, room: @room%>
+    </div>
   </main>
   <div class="menu">
     <div class="buttons">

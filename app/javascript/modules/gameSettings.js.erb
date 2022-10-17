@@ -122,23 +122,21 @@ function openMPModal(){
 
 function populateMPSettings(modal){
   var header = document.createElement('h2');
-  var closeBtn = document.createElement('button');
-
-  closeBtn.innerHTML ='<i class="fas fa-times"></i>';
-  closeBtn.classList.add('close-btn');
-  closeBtn.addEventListener('click', ModalManager.closeModal);
 
   header.innerHTML = 'Create a Game'
 
   modal.appendChild(header);
-  modal.appendChild(closeBtn);
   modal.appendChild(createMPForm());
 }
 
 function createMPForm(){
   var form = document.createElement('form');
 
+  var submitBtnWrapper = document.createElement('div');
+
   var submitBtn = document.createElement('input');
+
+  var playerCount = document.createElement('span');
 
   var selectStarter = document.createElement('select');
 
@@ -151,15 +149,23 @@ function createMPForm(){
   createLabel('starter', 'Starting Player', starterField)
   populateSelectOptions(starterField, selectStarter, starter)
 
+  submitBtnWrapper.classList.add('submit-btn-wrapper-mp');
+
   submitBtn.type = 'submit'
   submitBtn.value = 'Start'
 
+  playerCount.textContent = '0/2';
+  playerCount.classList.add('player-count');
+
   form.addEventListener('submit', createMPGame);
 
-  form.appendChild(starterField);
-  form.appendChild(submitBtn);
+  submitBtnWrapper.appendChild(submitBtn);
+  submitBtnWrapper.appendChild(playerCount);
 
-  return form;
+  form.appendChild(starterField);
+  form.appendChild(submitBtnWrapper);
+
+  return form
 }
 
 function createMPGame(event){

@@ -1,0 +1,16 @@
+<div class="modal-bg select-starting-player-modal">
+  <div class="modal animate__animated animate__bounceInLeft">
+    <h2>Create a Game</h2>
+    <%= current_user.name %>
+    <%= form_with model: @room do |form| %>
+      <div>
+        <%= form.label :starting_player %>
+        <%= form.select :starting_player, ['1', '2', 'random'] %>
+      </div>
+      <div class="submit-btn-wrapper-mp">
+        <%= form.submit 'Start', class: 'submit-modal' %>
+        <span class="player-count"> 0/2</span>
+      </div>
+    <%end%>
+  </div>
+</div>

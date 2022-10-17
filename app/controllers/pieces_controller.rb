@@ -16,6 +16,10 @@ class PiecesController < ApplicationController
 #        format.turbo_stream {render turbo_stream: turbo_stream.append(@room.board, partial: 'pieces/piece')}
 #        format.html{
 #          redirect_to @room
+      html = render(partial: 'boards/board', locals:{ room: @room } )
+
+      ActionCable.server.broadcast "room_channel_#{@room.id}", html: html, object: 'piece',
+                                                               player_count: @room.player_count
 #        }
 #      end
     else
