@@ -93,6 +93,12 @@ input[type='submit']:hover{
   cursor: pointer;
 }
 
+.disabled{
+  background-color: rgb(160, 160, 160) !important;
+  color: rgb(200, 200, 200) !important;
+  cursor: not-allowed !important;
+}
+
 .fa-check{
   color: var(--blue);
 }

@@ -20,7 +20,7 @@
 <body>
   <% if @room.adjusted == false %>
     <% if current_user.id == @room.player1 %>
-      <%=render 'rooms/form' %>
+      <%=render 'rooms/form', room: @room %>
     <% else %>
       <%= render 'rooms/wait' %>
     <%end%>

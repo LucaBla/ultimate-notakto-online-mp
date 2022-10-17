@@ -33,6 +33,10 @@ if(document.getElementsByClassName("board-wrapper").length != 0){
         document.getElementsByClassName("board-wrapper")[0].innerHTML = data.html2;
         //document.getElementsByTagName("main")[0].innerHTML = data.html3;
       }
+      if(data.object === 'player_count' && data.html === '2'){
+        document.getElementsByClassName("submit-modal")[0].disabled = false;
+        document.getElementsByClassName("submit-modal")[0].classList.remove('disabled');
+      }
       if(data.object === 'modal'){
         var modal = document.getElementsByClassName('modal')[0];
         document.getElementsByClassName("board-wrapper")[0].innerHTML = data.html;
