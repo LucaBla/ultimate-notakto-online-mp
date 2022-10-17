@@ -1,0 +1,7 @@
+<%if room.player_count == 2%>
+  <div id="<%= dom_id(room.board) %>" class="board board">
+    <% room.board.b_rows.each_with_index do |b_row, index|%>
+      <%= render 'boards/b_row', index: index, b_row: b_row %>
+    <%end%>
+  </div>
+<%end%>

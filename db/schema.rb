@@ -43,6 +43,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_16_231433) do
   end
 
   create_table "rooms", force: :cascade do |t|
+    t.json "state"
     t.integer "player_count"
     t.integer "player1"
     t.integer "player2"
@@ -60,10 +61,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_16_231433) do
   end
 
   create_table "sub_boards", force: :cascade do |t|
-    t.bigint "b_row_id"
+    t.bigint "room_id"
+    t.json "state"
+    t.boolean "lost"
+    t.boolean "playable", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["b_row_id"], name: "index_sub_boards_on_b_row_id"
+    t.index ["room_id"], name: "index_sub_boards_on_room_id"
   end
 
   create_table "users", force: :cascade do |t|

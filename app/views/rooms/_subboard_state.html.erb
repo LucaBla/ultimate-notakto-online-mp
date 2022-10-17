@@ -1,0 +1,18 @@
+<% 3.times do |row| %>
+  <div class="row">
+    <% 3.times do |col| %>
+      <div class="cell">
+        <% if !room.state[row.to_s][col.to_s].nil? %>
+          <%= room.state[row.to_s][col.to_s] %>
+        <%else%>
+          <%# button_to 'test', room_path(room), params: {row: row, col: col}, method: :patch %>
+          <%= form_with model: room do |form|%>
+            <%= form.hidden_field :row, value: row %>
+            <%= form.hidden_field :col, value: col %>
+            <%= form.submit 'Set x'%>
+          <%end%>
+        <%end%>
+      </div>
+    <%end%>
+  </div>
+<%end%>
