@@ -54,7 +54,7 @@ class Room < ApplicationRecord
   end
 
   def game_over?
-    boards = sub_boards
+    boards = sub_boards.order(id: :asc)
     return false if !three_in_a_diag(boards) && !three_in_a_col(boards) && !three_in_a_row(boards)
 
     true
