@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   # root "articles#index"
   root 'static_pages#home'
 
-  resources :rooms, only: [:show, :new, :create, :update]
+  resources :rooms, only: [:show, :new, :create, :update] do
+    patch :reset, on: :member
+  end
 
   resources :pieces, only: [:create, :new]
   # mount ActionCable.server => '/cable'

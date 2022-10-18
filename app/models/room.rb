@@ -8,7 +8,6 @@ class Room < ApplicationRecord
   end
 
   def swap_active_player
-    #first active player hardcoded in rooms_controller
     if self.active_player == player1
       self.active_player = player2
     else
@@ -17,10 +16,19 @@ class Room < ApplicationRecord
     save!
   end
 
-  def get_winner(current_user)
-    return player2 if current_user.id == player1
+  def get_winner(active_user)
+    return player2 if active_user == player1
 
     player1
+  end
+
+  def set_starting_player
+    player = starting_player
+    if player == 'random'
+      player = rand(1..2)
+    end
+    self.active_player = player1 if player == 1 || player == '1'
+    self.active_player = player2 if player == 2 || player == '2'
   end
 
   def set_playable_fields(row, col)
@@ -47,10 +55,20 @@ class Room < ApplicationRecord
 
   def reset_room
     sub_boards.each do |sub_board|
-      sub_board.delete
-    end
+      sub_board.state = {
+        0 => { 0 => nil, 1 => nil, 2 => nil },
+        1 => { 0 => nil, 1 => nil, 2 => nil },
+        2 => { 0 => nil, 1 => nil, 2 => nil }
+      }
+      sub_board.lost = false
+      sub_board.playable = true
 
-    build_sub_boards
+      sub_board.save!
+    end
+    self.adjusted = false
+    self.active_player = player1
+    self.reseted = true
+    save!
   end
 
   def game_over?

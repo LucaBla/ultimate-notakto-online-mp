@@ -19,6 +19,9 @@ if(document.getElementsByClassName("board-wrapper").length != 0){
     received(data) {
       // Called when there's incoming data on the websocket for this channel
       console.log(data)
+      if(data.object === 'reset'){
+        document.getElementsByTagName('html')[0].innerHTML = data.html;
+      }
       if(data.player_count !== 2 && data.object !== 'player_count' && data.object !== 'modal'){
         return
       }
@@ -41,6 +44,7 @@ if(document.getElementsByClassName("board-wrapper").length != 0){
         document.getElementsByClassName("submit-modal")[0].classList.remove('disabled');
       }
       if(data.object === 'modal'){
+        const userId = document.getElementsByClassName('board-wrapper')[0].getAttribute('data-user-id')
         if(document.getElementsByClassName('modal')[0] != null){
           var modal = document.getElementsByClassName('modal')[0];
           Music.playDreaming();
@@ -54,11 +58,16 @@ if(document.getElementsByClassName("board-wrapper").length != 0){
         }
         document.getElementsByClassName("board-wrapper")[0].innerHTML = data.html;
         console.log(data.possible_winner)
-        if(document.getElementsByClassName('board-wrapper')[0].getAttribute('data-user-id') != data.possible_winner){
+        if(userId == data.possible_winner){
           document.getElementsByClassName('board')[0].classList.add('click-forbidden')
         }
         if(document.getElementsByClassName('board')[0].getAttribute('data-gameover') === 'true'){
           displayController.showGameOverScreenMP(data.possible_winner_player_num);
+          if(userId == document.getElementsByClassName('board-wrapper')[0].getAttribute('data-host-id')
+            ){
+              var replayButton = document.getElementById('replay-btn').content.cloneNode(true)
+              document.getElementsByClassName('menu')[0].appendChild(replayButton);
+          }
         }
         if(document.getElementsByClassName('animate__flash').length != 0)
           Music.lostBoardsSound.play();

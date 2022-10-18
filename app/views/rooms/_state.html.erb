@@ -4,7 +4,7 @@
       <%sub_board = SubBoard.find(room.state[row.to_s][col.to_s])%>
       <% lost = sub_board.lost %>
       <% playable = sub_board.playable %>
-      <div class="sub-board <%= 'lost-subboard' if lost %> <%= 'playable' if playable %> <%='animate__animated animate__flash' if lost && played_piece_position[0] == sub_board.id%>">
+      <div class="sub-board <%= 'lost-subboard' if lost %> <%= 'playable' if playable %> <%='animate__animated animate__flash' if lost && played_piece_position != nil && played_piece_position[0] == sub_board.id%>">
         <%= render 'sub_boards/sub_board', sub_board: sub_board, room: room, lost: lost,
                                            playable: playable, game_over: game_over,
                                            played_piece_position: played_piece_position %>

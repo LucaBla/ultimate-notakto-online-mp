@@ -17,7 +17,7 @@ class SubBoard < ApplicationRecord
 
     state[row.to_s][col.to_s] = :x
 
-    room.swap_active_player
+    #room.swap_active_player
 
     save!
 

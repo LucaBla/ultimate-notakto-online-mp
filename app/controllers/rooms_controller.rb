@@ -42,19 +42,30 @@ class RoomsController < ApplicationController
 
   def update
     room = Room.find(params[:id])
-    if room.adjusted == true
-      possible_winner = room.get_winner(current_user)
-    else
-      possible_winner = room.active_player
-    end
-    room.adjusted = true
-
     played_piece_position = nil
 
     played_piece_position = SubBoard.find(state_params[:sub_board_id]).move!(state_params[:row], state_params[:col], current_user) if state_params.has_key?(:col)
+
+    room.swap_active_player
     room.update(room_params)
 
-    if current_user.id == room.player1
+    if room.adjusted == false
+      room.set_starting_player
+      room.adjusted = true
+      room.save!
+    end
+
+    puts 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+    puts room.active_player
+
+    if room.adjusted == true && room.reseted == false
+      possible_winner = room.get_winner(room.active_player)
+    else
+      possible_winner = room.get_winner(room.active_player) if room.reseted == false
+      possible_winner = room.active_player if room.reseted == true
+    end
+
+    if room.active_player == room.player1
       player_num = 2
     else
       player_num = 1
@@ -66,6 +77,16 @@ class RoomsController < ApplicationController
     ActionCable.server.broadcast "room_channel_#{room.id}", html: html, object: 'modal',
                                                             possible_winner: possible_winner,
                                                             possible_winner_player_num: player_num
+  end
+
+  def reset
+    @room = Room.find(params[:id])
+    @room.reset_room
+
+    html = render( 'rooms/show',
+                  locals: { room: @room })
+
+    ActionCable.server.broadcast "room_channel_#{@room.id}", html: html, object: 'reset'
   end
 
   private
