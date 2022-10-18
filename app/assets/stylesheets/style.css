@@ -233,7 +233,27 @@ margin-right: 35px;
   border-right: var(--border-size) solid var(--currant);
 }
 
+.cell form{
+  width: 100%;
+  height: 100%;
+}
+
+.mp-piece-btn{
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
 .x{
+  position: relative;
+  height: fit-content;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+}
+
+.x-mp{
   position: relative;
   height: fit-content;
   width: fit-content;
@@ -246,6 +266,17 @@ margin-right: 35px;
   height: fit-content;
   stroke-dasharray: 270;
   stroke-dashoffset: 0;
+  animation: 0.25s fillSvg linear;
+}
+
+.x-mp svg{
+  width: fit-content;
+  height: fit-content;
+  stroke-dasharray: 270;
+  stroke-dashoffset: 0;
+}
+
+.animate-mp-x svg{
   animation: 0.25s fillSvg linear;
 }
 

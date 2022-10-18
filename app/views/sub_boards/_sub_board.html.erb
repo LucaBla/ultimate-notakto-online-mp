@@ -1,15 +1,20 @@
+<% played_piece_position = nil if played_piece_position == nil || played_piece_position[0] != sub_board.id %>
 <% 3.times do |row| %>
   <div class="row row-<%= row %>">
     <% 3.times do |col| %>
       <div class="cell <%= 'cell-middle' if col == 1 %>">
         <% if !sub_board.state[row.to_s][col.to_s].nil? %>
-          <%= render 'pieces/piece' %>
+          <% if played_piece_position != nil && row.to_s == played_piece_position[1] && col.to_s == played_piece_position[2] %>
+            <%= render 'pieces/piece', played_piece: true %>
+          <%else%>
+            <%= render 'pieces/piece'%>
+          <%end%>
         <%elsif !lost && playable && !game_over%>
           <%= form_with model: room do |form|%>
             <%= form.hidden_field :row, value: row %>
             <%= form.hidden_field :col, value: col %>
             <%= form.hidden_field :sub_board_id, value: sub_board.id %>
-            <%= form.submit 'Set x'%>
+            <%= form.submit '', class:'mp-piece-btn'%>
           <%end%>
         <%end%>
       </div>

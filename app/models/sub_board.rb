@@ -28,6 +28,8 @@ class SubBoard < ApplicationRecord
     save!
 
     room.set_playable_fields(row, col)
+
+    [self.id, row, col]
   end
 
   def game_over?
