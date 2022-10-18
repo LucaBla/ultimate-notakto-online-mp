@@ -8,6 +8,7 @@ class CreateRooms < ActiveRecord::Migration[7.0]
       t.integer :active_player
       t.string :starting_player
       t.boolean :adjusted
+      t.integer :last_sub_board_lost_id
       t.timestamps
     end
   end

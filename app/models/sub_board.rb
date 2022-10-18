@@ -21,15 +21,17 @@ class SubBoard < ApplicationRecord
 
     save!
 
-    self.lost = game_over?
+    if lost == false && game_over?
+      self.lost = true if lost == false
 
-    self.playable = false if game_over?
+      self.playable = false if playable == true
 
-    save!
+      save!
+    end
 
     room.set_playable_fields(row, col)
 
-    [self.id, row, col]
+    [id, row, col]
   end
 
   def game_over?

@@ -60,8 +60,9 @@ if(document.getElementsByClassName("board-wrapper").length != 0){
         if(document.getElementsByClassName('board')[0].getAttribute('data-gameover') === 'true'){
           displayController.showGameOverScreenMP(data.possible_winner_player_num);
         }
+        if(document.getElementsByClassName('animate__flash').length != 0)
+          Music.lostBoardsSound.play();
       }
-      
     }
   });
 }
