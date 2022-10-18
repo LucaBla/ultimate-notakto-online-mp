@@ -1,12 +1,11 @@
-#require 'redis'
 class RoomsController < ApplicationController
   def show
     @room = Room.find(params[:id])
     RoomChannel.broadcast_to(@room, 'test')
     if @room.player2 == @room.player1
-      @room.player2 = nil 
+      @room.player2 = nil
     end
-    if @room.player2 == nil && @room.player1 != current_user.id
+    if @room.player2.nil? && @room.player1 != current_user.id
       @room.player2 = current_user.id
       @room.save
     end
@@ -18,7 +17,6 @@ class RoomsController < ApplicationController
 
   def create
     @room = Room.new
-    #@room.board = @room.build_board
     @room.player_count = 0
     @room.starting_player = '1'
     @room.player1 = current_user.id
@@ -26,20 +24,6 @@ class RoomsController < ApplicationController
     @room.adjusted = false
 
     @room.build_sub_boards
-
-    #@board = @room.board
-
-    #@room.board.b_rows.build([{}, {}, {}])
-
-    #@room.board.b_rows.each do |b_row|
-    #  b_row.sub_boards.build([{}, {}, {}])
-    #  b_row.sub_boards.each do |sub_board|
-    #    sub_board.rows.build([{}, {}, {}])
-    #    sub_board.rows.each do |row|
-    #      row.cells.build([{}, {}, {}])
-    #    end
-    #  end
-    #end
 
     if @room.save
       @room.state = {
@@ -68,9 +52,15 @@ class RoomsController < ApplicationController
     SubBoard.find(state_params[:sub_board_id]).move!(state_params[:row], state_params[:col], current_user) if state_params.has_key?(:col)
     room.update(room_params)
 
+    if current_user.id == room.player1
+      player_num = 2
+    else
+      player_num = 1
+    end
+
     html = render(partial: 'boards/board', locals: { room: room })
 
-    ActionCable.server.broadcast "room_channel_#{room.id}", html: html, object: 'modal', possible_winner: possible_winner
+    ActionCable.server.broadcast "room_channel_#{room.id}", html: html, object: 'modal', possible_winner: possible_winner, possible_winner_player_num: player_num
   end
 
   private

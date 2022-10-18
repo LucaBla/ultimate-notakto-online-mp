@@ -54,7 +54,7 @@ if(document.getElementsByClassName("board-wrapper").length != 0){
           document.getElementsByClassName('board')[0].classList.add('click-forbidden')
         }
         if(document.getElementsByClassName('board')[0].getAttribute('data-gameover') === 'true'){
-          displayController.showGameOverScreenMP(data.possible_winner);
+          displayController.showGameOverScreenMP(data.possible_winner_player_num);
         }
       }
       
