@@ -25,9 +25,9 @@ class SubBoard < ApplicationRecord
 
     self.playable = false if game_over?
 
-    room.set_playable_fields(row, col)
-
     save!
+
+    room.set_playable_fields(row, col)
   end
 
   def game_over?
