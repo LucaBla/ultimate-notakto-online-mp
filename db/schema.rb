@@ -47,6 +47,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_16_231433) do
     t.integer "player_count"
     t.integer "player1"
     t.integer "player2"
+    t.integer "active_player"
     t.string "starting_player"
     t.boolean "adjusted"
     t.datetime "created_at", null: false

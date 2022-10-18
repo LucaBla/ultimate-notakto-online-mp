@@ -1,4 +1,5 @@
 import consumer from "channels/consumer"
+import displayController from '../modules/displayController.js';
 
 if(document.getElementsByClassName("board-wrapper").length != 0){
   const room_id = Number(document.getElementsByClassName("board-wrapper")[0].getAttribute('data-room-id'))
@@ -33,17 +34,24 @@ if(document.getElementsByClassName("board-wrapper").length != 0){
         document.getElementsByClassName("board-wrapper")[0].innerHTML = data.html2;
         //document.getElementsByTagName("main")[0].innerHTML = data.html3;
       }
-      if(data.object === 'player_count' && data.html === '2'){
+      if(data.object === 'player_count' && data.html === '2' &&
+         document.getElementsByClassName("submit-modal")[0]!= null){
         document.getElementsByClassName("submit-modal")[0].disabled = false;
         document.getElementsByClassName("submit-modal")[0].classList.remove('disabled');
       }
       if(data.object === 'modal'){
-        var modal = document.getElementsByClassName('modal')[0];
+        if(document.getElementsByClassName('modal')[0] != null){
+          var modal = document.getElementsByClassName('modal')[0];
+          modal.classList.add('modal', 'animate__animated', 'animate__bounceOutRight')
+          modal.addEventListener('animationend', () =>{
+            document.getElementsByClassName('modal-bg')[0].remove();
+            displayController.hideWave();
+          });
+        }
         document.getElementsByClassName("board-wrapper")[0].innerHTML = data.html;
-        modal.classList.add('modal', 'animate__animated', 'animate__bounceOutRight')
-        modal.addEventListener('animationend', () =>{
-        document.getElementsByClassName('modal-bg')[0].remove();
-  });
+        if(document.getElementsByClassName('board')[0].getAttribute('data-gameover') === 'true'){
+          displayController.showGameOverScreenMP(data.winner);
+        }
       }
       
     }

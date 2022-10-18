@@ -44,7 +44,7 @@
     <%# turbo_stream_from dom_id(@room.board) %>
     <div class="board-wrapper" data-room-id="<%=@room.try(:id)%>">
       <%# render @room.board, room: @room%>
-      <%= render 'rooms/state', room: @room %>
+      <%= render 'boards/board', room: @room%>
     </div>
   </main>
   <div class="menu">

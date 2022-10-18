@@ -105,9 +105,36 @@ const displayController = (() => {
     xDance();
   };
 
+  const showGameOverScreenMP = (winner) => {
+    document.getElementsByTagName('audio')[0].pause();
+    document.getElementsByTagName('audio')[0].src = '<%= asset_path("Chiptronical.mp3") %>';
+    document.getElementsByTagName('audio')[0].play();
+
+    document.getElementsByTagName('main')[0].classList.remove('slide-down-main');
+    
+    showWave();
+    hideActivePlayerLabel();
+    showBtns();
+    startConfetti();
+
+    showWinnerHeaderMP(winner);
+
+    xDance();
+  };
+
   const showWinnerHeader = (winner) =>{
     let h2 = document.getElementsByTagName('main')[0].appendChild(document.createElement('h2'));
     h2.textContent = 'Congratulations Player ' + winner.playerNumber + ' you won!';
+    h2.classList.add('winner-header', 'animate__animated' ,'animate__bounceInDown');
+    h2.addEventListener('animationend', () => {
+      h2.classList.remove('animate__bounceInDown');
+      h2.classList.add('animate__tada', 'animate__infinite', 'animate__slower');
+    });
+  };
+
+  const showWinnerHeaderMP = (winner) =>{
+    let h2 = document.getElementsByTagName('main')[0].appendChild(document.createElement('h2'));
+    h2.textContent = 'Congratulations Player ' + winner + ' won!';
     h2.classList.add('winner-header', 'animate__animated' ,'animate__bounceInDown');
     h2.addEventListener('animationend', () => {
       h2.classList.remove('animate__bounceInDown');
@@ -145,7 +172,7 @@ const displayController = (() => {
 
   return {
     hideBtns, showBtns, hideWave, showWave, showActivePlayerLabel, hideActivePlayerLabel, reloadActivePlayerLabel,
-    addPieceToHTML, closeSubBoard, showPlayableBoard, removePlayableBoard, showGameOverScreen, 
+    addPieceToHTML, closeSubBoard, showPlayableBoard, removePlayableBoard, showGameOverScreen, showGameOverScreenMP, 
     removeGameOverScreen, removeSubBoardBorders
   };
 

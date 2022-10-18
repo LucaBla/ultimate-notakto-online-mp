@@ -1,6 +1,28 @@
 class Room < ApplicationRecord
   has_many :sub_boards
 
+  def build_sub_boards
+    9.times do
+      sub_boards.build
+    end
+  end
+
+  def swap_active_player
+    #first active player hardcoded in rooms_controller
+    if self.active_player == player1
+      self.active_player = player2
+    else
+      self.active_player = player1
+    end
+    save!
+  end
+
+  def get_winner(current_user)
+    return player2 if current_user.id == player1
+
+    player1
+  end
+
   def set_playable_fields(row, col)
     playable_sub_board = sub_boards.find(state[row.to_s][col.to_s])
 
@@ -23,11 +45,19 @@ class Room < ApplicationRecord
     end
   end
 
+  def reset_room
+    sub_boards.each do |sub_board|
+      sub_board.delete
+    end
+
+    build_sub_boards
+  end
+
   def game_over?
     boards = sub_boards
-    return true if three_in_a_row(boards) || three_in_a_col(boards) || three_in_a_diag(boards)
+    return false if !three_in_a_diag(boards) && !three_in_a_col(boards) && !three_in_a_row(boards)
 
-    false
+    true
   end
 
   def three_in_a_row(boards)
@@ -70,26 +100,4 @@ class Room < ApplicationRecord
 
     false
   end
-#  const resetBoard = () => {
-#    for(const row of board){
-#      for(const cell of row){
-#        cell.lost = false;
-#        for(let i = 0; i < 3; i++){
-#          for(let j = 0; j < 3; j++){
-#            cell.removePiece(i, j);
-#          }
-#        }
-#      }
-#    }
-#  }
-#
-#
-#
-#
-#
-#
-#
-#
-#  const board = createBoard();
-#  const playableSubBoard = null;
 end

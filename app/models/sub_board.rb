@@ -12,12 +12,12 @@ class SubBoard < ApplicationRecord
     self.lost = false
   end
 
-  def move!(row, col)
-    return if lost
+  def move!(row, col, current_user)
+    return if lost || current_user.id != room.active_player
 
     state[row.to_s][col.to_s] = :x
 
-    #swap active_payer
+    room.swap_active_player
 
     save!
 

@@ -2,10 +2,12 @@
   <div class="b-row">
     <% 3.times do |col| %>
       <%sub_board = SubBoard.find(room.state[row.to_s][col.to_s])%>
+      <% lost = sub_board.lost %>
+      <% playable = sub_board.playable %>
       <div class="sub-board 
-                  <%= 'lost-subboard' if sub_board.lost %> 
-                  <%= 'playable' if sub_board.playable %>">
-        <%= render 'sub_boards/sub_board', sub_board: sub_board, room: room %>
+                  <%= 'lost-subboard' if lost %> 
+                  <%= 'playable' if playable %>">
+        <%= render 'sub_boards/sub_board', sub_board: sub_board, room: room, lost: lost, playable: playable, game_over: game_over %>
       </div>
     <%end%>
   </div>

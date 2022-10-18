@@ -99,6 +99,10 @@ input[type='submit']:hover{
   cursor: not-allowed !important;
 }
 
+.click-forbidden{
+  pointer-events: none;;
+}
+
 .fa-check{
   color: var(--blue);
 }
@@ -475,6 +479,7 @@ table a{
   position: absolute;
   color: #D9D9D9;
   -webkit-text-stroke: black 1px;
+  text-align: center;
 }
 
 .dance{

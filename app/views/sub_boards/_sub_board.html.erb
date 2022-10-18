@@ -4,7 +4,7 @@
       <div class="cell <%= 'cell-middle' if col == 1 %>">
         <% if !sub_board.state[row.to_s][col.to_s].nil? %>
           <%= render 'pieces/piece' %>
-        <%elsif !sub_board.lost && sub_board.playable && !room.game_over?%>
+        <%elsif !lost && playable && !game_over%>
           <%= form_with model: room do |form|%>
             <%= form.hidden_field :row, value: row %>
             <%= form.hidden_field :col, value: col %>

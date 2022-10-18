@@ -22,11 +22,10 @@ class RoomsController < ApplicationController
     @room.player_count = 0
     @room.starting_player = '1'
     @room.player1 = current_user.id
+    @room.active_player = @room.player1
     @room.adjusted = false
 
-    for i in 0..8
-      @room.sub_boards.build
-    end
+    @room.build_sub_boards
 
     #@board = @room.board
 
@@ -61,12 +60,12 @@ class RoomsController < ApplicationController
     room = Room.find(params[:id])
     room.adjusted = true
     #room.move!(state_params[:row], state_params[:col]) if state_params.has_key?(:col)
-    SubBoard.find(state_params[:sub_board_id]).move!(state_params[:row], state_params[:col]) if state_params.has_key?(:col)
+    SubBoard.find(state_params[:sub_board_id]).move!(state_params[:row], state_params[:col], current_user) if state_params.has_key?(:col)
     room.update(room_params)
 
     html = render(partial: 'boards/board', locals: { room: room })
 
-    ActionCable.server.broadcast "room_channel_#{room.id}", html: html, object: 'modal'
+    ActionCable.server.broadcast "room_channel_#{room.id}", html: html, object: 'modal', winner: room.get_winner(current_user)
   end
 
   private
