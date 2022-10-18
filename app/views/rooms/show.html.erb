@@ -42,7 +42,7 @@
       
     </div>
     <%# turbo_stream_from dom_id(@room.board) %>
-    <div class="board-wrapper" data-room-id="<%=@room.try(:id)%>">
+    <div class="board-wrapper" data-room-id="<%=@room.try(:id)%>" data-user-id="<%=current_user.id%>">
       <%# render @room.board, room: @room%>
       <%= render 'boards/board', room: @room%>
     </div>

@@ -49,8 +49,12 @@ if(document.getElementsByClassName("board-wrapper").length != 0){
           });
         }
         document.getElementsByClassName("board-wrapper")[0].innerHTML = data.html;
+        console.log(data.possible_winner)
+        if(document.getElementsByClassName('board-wrapper')[0].getAttribute('data-user-id') != data.possible_winner){
+          document.getElementsByClassName('board')[0].classList.add('click-forbidden')
+        }
         if(document.getElementsByClassName('board')[0].getAttribute('data-gameover') === 'true'){
-          displayController.showGameOverScreenMP(data.winner);
+          displayController.showGameOverScreenMP(data.possible_winner);
         }
       }
       

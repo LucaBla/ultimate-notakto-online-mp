@@ -58,6 +58,11 @@ class RoomsController < ApplicationController
 
   def update
     room = Room.find(params[:id])
+    if room.adjusted == true
+      possible_winner = room.get_winner(current_user)
+    else
+      possible_winner = room.active_player
+    end
     room.adjusted = true
     #room.move!(state_params[:row], state_params[:col]) if state_params.has_key?(:col)
     SubBoard.find(state_params[:sub_board_id]).move!(state_params[:row], state_params[:col], current_user) if state_params.has_key?(:col)
@@ -65,7 +70,7 @@ class RoomsController < ApplicationController
 
     html = render(partial: 'boards/board', locals: { room: room })
 
-    ActionCable.server.broadcast "room_channel_#{room.id}", html: html, object: 'modal', winner: room.get_winner(current_user)
+    ActionCable.server.broadcast "room_channel_#{room.id}", html: html, object: 'modal', possible_winner: possible_winner
   end
 
   private
