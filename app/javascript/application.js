@@ -19,6 +19,8 @@ else{
   ModalManager.animateTitle();
   document.getElementsByTagName('audio')[0].play();
   document.getElementsByClassName('menu')[0].getElementsByClassName('buttons')[0].style.display = 'none';
+  document.getElementsByTagName('header')[0].style.zIndex= '10000';
+  document.getElementsByClassName('menu')[0].style.zIndex= '10000';
 }
 changeMobileWidget();
 

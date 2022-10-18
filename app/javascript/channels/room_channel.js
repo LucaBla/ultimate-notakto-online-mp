@@ -1,5 +1,6 @@
 import consumer from "channels/consumer"
 import displayController from '../modules/displayController.js';
+import * as Music from '../modules/music.js';
 
 if(document.getElementsByClassName("board-wrapper").length != 0){
   const room_id = Number(document.getElementsByClassName("board-wrapper")[0].getAttribute('data-room-id'))
@@ -42,11 +43,14 @@ if(document.getElementsByClassName("board-wrapper").length != 0){
       if(data.object === 'modal'){
         if(document.getElementsByClassName('modal')[0] != null){
           var modal = document.getElementsByClassName('modal')[0];
+          Music.playDreaming();
           modal.classList.add('modal', 'animate__animated', 'animate__bounceOutRight')
           modal.addEventListener('animationend', () =>{
             document.getElementsByClassName('modal-bg')[0].remove();
             displayController.hideWave();
           });
+        }else{
+          Music.stroke.play();
         }
         document.getElementsByClassName("board-wrapper")[0].innerHTML = data.html;
         console.log(data.possible_winner)

@@ -4,6 +4,7 @@ const stroke = new Audio('<%= asset_path("pen-stroke2.mp3") %>');
 const lostBoardsSound = new Audio('<%= asset_path("board-lost.mp3") %>');
 const whoosh = new Audio('<%= asset_path("whoosh.mp3") %>');
 
+
 function setVol(){
   var volSlider = document.getElementsByClassName('vol')[0];
 
@@ -12,6 +13,11 @@ function setVol(){
   whoosh.volume = volSlider.value / 100;
   document.getElementsByTagName('audio')[0].volume = volSlider.value /100;
 }
-////////////////////////////////
 
-export {stroke, lostBoardsSound, whoosh, setVol}
+function playDreaming(){
+  document.getElementsByTagName('audio')[0].pause();
+  document.getElementsByTagName('audio')[0].src = '<%= asset_path("Dreaming.mp3") %>';
+  document.getElementsByTagName('audio')[0].play();
+}
+
+export {stroke, lostBoardsSound, whoosh, setVol, playDreaming}
