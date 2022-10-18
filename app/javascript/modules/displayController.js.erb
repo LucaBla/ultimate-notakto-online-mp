@@ -119,7 +119,7 @@ const displayController = (() => {
 
     showWinnerHeaderMP(winner);
 
-    xDance();
+    xDanceMP();
   };
 
   const showWinnerHeader = (winner) =>{
@@ -144,6 +144,19 @@ const displayController = (() => {
 
   const xDance = () =>{
     let pieces = Array.from(document.getElementsByClassName('x'));
+    let pieceIndex = 0;
+    let piece = pieces[pieceIndex];
+
+    for(let i = 0; i < pieces.length; i++) {
+      pieceIndex = Math.floor(Math.random()*pieces.length);
+      piece = pieces[pieceIndex];
+      piece.classList.add('dance');
+      pieces.splice(pieceIndex, 1);
+    }
+  };
+
+  const xDanceMP = () =>{
+    let pieces = Array.from(document.getElementsByClassName('x-mp'));
     let pieceIndex = 0;
     let piece = pieces[pieceIndex];
 
