@@ -14,34 +14,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_16_231433) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "b_rows", force: :cascade do |t|
-    t.bigint "board_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["board_id"], name: "index_b_rows_on_board_id"
-  end
-
-  create_table "boards", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "room_id"
-    t.index ["room_id"], name: "index_boards_on_room_id"
-  end
-
-  create_table "cells", force: :cascade do |t|
-    t.bigint "row_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["row_id"], name: "index_cells_on_row_id"
-  end
-
-  create_table "pieces", force: :cascade do |t|
-    t.bigint "cell_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["cell_id"], name: "index_pieces_on_cell_id"
-  end
-
   create_table "rooms", force: :cascade do |t|
     t.json "state"
     t.integer "player_count"
@@ -53,13 +25,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_16_231433) do
     t.boolean "reseted", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "rows", force: :cascade do |t|
-    t.bigint "sub_board_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["sub_board_id"], name: "index_rows_on_sub_board_id"
   end
 
   create_table "sub_boards", force: :cascade do |t|

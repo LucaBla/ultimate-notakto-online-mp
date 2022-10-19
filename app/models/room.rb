@@ -1,5 +1,5 @@
 class Room < ApplicationRecord
-  has_many :sub_boards
+  has_many :sub_boards, dependent: :destroy
 
   def build_sub_boards
     9.times do

@@ -27,7 +27,7 @@ class RoomChannel < ApplicationCable::Channel
     html2 = ''
 
     if room.player_count == 0
-      room.delete
+      room.destroy
     elsif room.player_count == 2
       html2 = ApplicationController.render(partial: 'boards/board', locals:{ room: room } )
     end
