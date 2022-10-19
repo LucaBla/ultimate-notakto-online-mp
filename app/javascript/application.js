@@ -15,14 +15,23 @@ if (window.location.pathname === '/'){
   ModalManager.openMusicModal();
 }
 else{
-  //GameSettings.openMPModal();
   ModalManager.animateTitle();
   document.getElementsByTagName('audio')[0].play();
   document.getElementsByClassName('menu')[0].getElementsByClassName('buttons')[0].style.display = 'none';
   document.getElementsByTagName('header')[0].style.zIndex= '10000';
   document.getElementsByClassName('menu')[0].style.zIndex= '10000';
+  document.getElementById("link-copy-button").addEventListener("click", copyLink);
 }
 changeMobileWidget();
+
+function copyLink(){
+    var copyText = document.getElementById("link-copy");
+
+    copyText.select();
+    copyText.setSelectionRange(0, 99999);
+  
+    navigator.clipboard.writeText(copyText.value);
+}
 
 async function changeMobileWidget(){
   document.getElementsByClassName('floatingchat-container-mobi')[0].contentWindow.document

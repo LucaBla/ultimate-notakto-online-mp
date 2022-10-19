@@ -15,6 +15,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_16_231433) do
   enable_extension "plpgsql"
 
   create_table "rooms", force: :cascade do |t|
+    t.string "code"
     t.json "state"
     t.integer "player_count"
     t.integer "player1"

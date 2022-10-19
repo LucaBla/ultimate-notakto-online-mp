@@ -1,0 +1,39 @@
+<div>
+  </br>
+  <b>Ultimate Notakto</b> is a tic-tac-toe variant that combines <b>Notakto</b> and <b>Ultimate tic-tac-toe</b>. </br>
+  What makes <b>Notakto</b> special is that <b>both players</b> play the same piece <b>(X)</b>.</br>
+</div>
+
+<div>
+  </br>
+  The game is played on a board divided into <b>9 sub-boards</b>.</br>
+</div>
+
+</br><img src= "/assets/text_rules/text_rules_1.png" alt="text_rules_1" class='txt-rules-img'></br></br>
+
+<div>
+  At the <b>beginning of the game</b>, the starting player is <b>free to decide</b> in which sub-board he wants to place his piece.</br>
+  The <b>following player</b> must then put his piece in the <b>sub-board corresponding</b> to the field in which the previous player placed his piece.</br>
+  If a player has to play a <b>sub-board that has already been lost</b>, he is <b>free to choose</b> which sub-board he wants to play next.</br>
+  This <b>principle</b> is maintained for the <b>rest of the game</b>.</br>
+</div>
+
+<div>
+  </br>(<b>Example</b>: if player one places his piece into a bottom left field, the next player must place his piece in the bottom left sub-board)</br>
+</div>
+
+</br><img src="/assets/text_rules/text_rules_2.png" alt="text_rules_2" class='txt-rules-img'> </br>
+</br><img src="/assets/text_rules/text_rules_3.png" alt="text_rules_3" class='txt-rules-img'> </br></br>
+
+<div>
+  </br>
+  A sub-board is <b>lost</b> if a player makes a <b>three-in-a-row</b> there.</br>
+</div>
+</br><img src="/assets/text_rules/text_rules_4.png" alt="text_rules_4" class='txt-rules-img'></br></br>
+
+<div>
+</br>
+  If three lost <b>sub-boards</b> are in a row, the player that placed the <b>last piece</b> loses the game.
+</br>
+</div>
+</br><img src="/assets/text_rules/text_rules_5.png" alt="text_rules_5" class='txt-rules-img'></br></br>

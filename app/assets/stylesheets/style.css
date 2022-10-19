@@ -332,8 +332,7 @@ margin-right: 35px;
   color: var(--gainsboro);
   font-weight: bold;
   font-size: 20px;
-  margin-right: 20px;
-  width: 100px;
+  width: fit-content;
 }
 
 .modal-bg{
@@ -557,13 +556,28 @@ h2.animate__animated.animate__tada{
   background: var(--orange);
 }
 
-@keyframes fillSvg{
-  0%{
-    stroke-dashoffset: 266;
-  }
-  100%{
-    stroke-dashoffset: 0;
-  }
+.modal form .link-copy-wrapper{
+  display: inline-flex;
+  width: 100%;
+  gap: 3%;
+}
+
+.modal form .link-copy-wrapper input{
+  width: 80%;
+  background-color: var(--gainsboro);
+  color: var(--currant);
+  font-size: 16px;
+  padding: 8px 8px;
+}
+
+.modal form .link-copy-wrapper button{
+  background-color: var(--blue);
+  color: var(--gainsboro);
+  border-radius: 8px;
+  border: none;
+  padding: 8px 8px;
+  font-weight: bold;
+  font-size: 16px;
 }
 
 @media (min-width: 2000px){
@@ -680,6 +694,14 @@ h2.animate__animated.animate__tada{
     width: 20px !important;
     height: 20px !important;
   }
+  .x-mp{
+    width: 20px !important;
+    height: 20px !important;
+  }
+  .x-mp svg{
+    width: 20px !important;
+    height: 20px !important;
+  }
   .winner-header{
     font-size: 32px;
     text-align: center;
@@ -788,6 +810,10 @@ h2.animate__animated.animate__tada{
     font-size: 16px;
     padding: 10px 0px;
   }
+  .replay-btn{
+    font-size: 16px;
+    padding: 10px 5px;
+  }
   .modal .btn-wrapper{
     margin-top: 10px;
   }
@@ -841,6 +867,14 @@ h2.animate__animated.animate__tada{
     width: 2vw;
     height: 4.7vh;
   }
+  .x-mp{
+    width: 2vw;
+    height: 4.7vh;
+  }
+  .x-mp svg{
+    width: 2vw;
+    height: 4.7vh;
+  }
   .winner-header{
     font-size: 5vw;
   }
@@ -857,6 +891,10 @@ h2.animate__animated.animate__tada{
     width: 70px;
     font-size: 14px;
     padding: 6px 0px;
+  }
+  .replay-btn{
+    font-size: 14x;
+    padding: 6px 3px;
   }
   .rules-img{
     width: 50vh;
@@ -919,6 +957,14 @@ h2.animate__animated.animate__tada{
     width: 1.8vw;
     height: 4.5vh;
   }
+  .x-mp{
+    width: 1.8vw;
+    height: 4.5vh;
+  }
+  .x-mp svg{
+    width: 1.8vw;
+    height: 4.5vh;
+  }
   .menu{
     min-height: 50px;
     height: fit-content;
@@ -942,6 +988,10 @@ h2.animate__animated.animate__tada{
     width: 70px;
     font-size: 3vh;
     padding: 1.5vh 0px;
+  }
+  .replay-btn{
+    font-size: 3vh;
+    padding: 2px 1px;
   }
 }
 
@@ -973,6 +1023,19 @@ h2.animate__animated.animate__tada{
     width: 70px;
     font-size: 2.5vh;
     padding: 1vh 0px;
+  }
+  .replay-btn{
+    font-size: 2.5vh;
+    padding: 1vh 0.5vh;
+  }
+}
+
+@keyframes fillSvg{
+  0%{
+    stroke-dashoffset: 266;
+  }
+  100%{
+    stroke-dashoffset: 0;
   }
 }
 

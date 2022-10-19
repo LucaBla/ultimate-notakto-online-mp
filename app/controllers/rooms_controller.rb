@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
   def show
-    @room = Room.find(params[:id])
+    @room = Room.find_by!(code:params[:id])
     RoomChannel.broadcast_to(@room, 'test')
     if @room.player2 == @room.player1
       @room.player2 = nil
@@ -41,7 +41,7 @@ class RoomsController < ApplicationController
   end
 
   def update
-    room = Room.find(params[:id])
+    room = Room.find_by!(code: params[:id])
     played_piece_position = nil
 
     played_piece_position = SubBoard.find(state_params[:sub_board_id]).move!(state_params[:row], state_params[:col], current_user) if state_params.has_key?(:col)
@@ -71,7 +71,7 @@ class RoomsController < ApplicationController
     end
 
     html = render(partial: 'boards/board',
-                  locals: { room: room, played_piece_position: played_piece_position })
+                  locals: { room: room, played_piece_position: played_piece_position }, status: 204)
 
     ActionCable.server.broadcast "room_channel_#{room.id}", html: html, object: 'modal',
                                                             possible_winner: possible_winner,
@@ -79,13 +79,13 @@ class RoomsController < ApplicationController
   end
 
   def reset
-    room = Room.find(params[:id])
+    room = Room.find_by!(code: params[:id])
     room.reset_room
     room.set_starting_player
     room.save!
 
     html = render(partial: 'boards/board',
-                  locals: { room: room, starting_player: room.active_player })
+                  locals: { room: room, starting_player: room.active_player }, status: 204)
 
     if room.active_player == room.player1
       starting_player = 1

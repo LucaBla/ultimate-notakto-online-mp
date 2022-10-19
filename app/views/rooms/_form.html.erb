@@ -7,6 +7,10 @@
         <%= form.label :starting_player %>
         <%= form.select :starting_player, ['1', '2', 'random'] %>
       </div>
+      <div class="link-copy-wrapper">
+        <input type="text" value="<%= request.original_url %>" id="link-copy">
+        <%= button_tag 'Copy', type: 'button', id: 'link-copy-button' %>
+      </div>
       <div class="submit-btn-wrapper-mp">
         <% if room.player_count != 2 %>
           <%= form.submit 'Start', class: 'submit-modal disabled', disabled: true %>

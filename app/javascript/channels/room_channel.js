@@ -19,7 +19,7 @@ if(document.getElementsByClassName("board-wrapper").length != 0){
     received(data) {
       // Called when there's incoming data on the websocket for this channel
       const userId = document.getElementsByClassName('board-wrapper')[0].getAttribute('data-user-id')
-      console.log(data)
+      //console.log(data)
       if(data.object === 'reset'){
         Music.playDreaming();
         document.getElementsByClassName('board-wrapper')[0].innerHTML = data.html;
@@ -66,7 +66,6 @@ if(document.getElementsByClassName("board-wrapper").length != 0){
         }
         document.getElementsByClassName("board-wrapper")[0].innerHTML = data.html;
         document.getElementsByClassName('active-player-label')[0].innerHTML = data.possible_winner_player_num
-        console.log(data.possible_winner)
         if(userId != document.getElementsByClassName('board')[0].getAttribute('data-active-player')){
           document.getElementsByClassName('board')[0].classList.add('click-forbidden')
         }

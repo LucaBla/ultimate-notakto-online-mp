@@ -1,6 +1,14 @@
 class Room < ApplicationRecord
   has_many :sub_boards, dependent: :destroy
 
+  before_validation(on: :create) do
+    self.code = [*('a'..'z'),*('0'..'9')].shuffle[0,10].join
+  end
+
+  def to_param
+    code
+  end
+
   def build_sub_boards
     9.times do
       sub_boards.build
