@@ -23,6 +23,7 @@ if(document.getElementsByClassName("board-wrapper").length != 0){
       if(data.object === 'reset'){
         Music.playDreaming();
         document.getElementsByClassName('board-wrapper')[0].innerHTML = data.html;
+        document.getElementsByClassName('active-player-label')[0].innerHTML = data.starting_player
         if(userId != document.getElementsByClassName('board')[0].getAttribute('data-active-player')){
           document.getElementsByClassName('board')[0].classList.add('click-forbidden')
         }
@@ -64,6 +65,7 @@ if(document.getElementsByClassName("board-wrapper").length != 0){
           Music.stroke.play();
         }
         document.getElementsByClassName("board-wrapper")[0].innerHTML = data.html;
+        document.getElementsByClassName('active-player-label')[0].innerHTML = data.possible_winner_player_num
         console.log(data.possible_winner)
         if(userId != document.getElementsByClassName('board')[0].getAttribute('data-active-player')){
           document.getElementsByClassName('board')[0].classList.add('click-forbidden')

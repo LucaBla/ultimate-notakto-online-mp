@@ -26,11 +26,17 @@ const displayController = (() => {
     await new Promise(resolve => setTimeout(resolve, 2500));
     document.getElementsByClassName('menu')[0].removeEventListener('animationend', hideAfterTime);
     document.getElementsByTagName('body')[0].style.overflowY = 'scroll';
+    if(document.getElementsByClassName('board-wrapper').length != 0){
+      document.getElementsByClassName('active-player-label')[0].classList.add('show')
+    }
   };
 
   const showWave = () =>{
     document.getElementsByClassName('menu')[0].classList.remove('hidden', 'animate__slideOutDown');
     document.getElementsByClassName('menu')[0].classList.add('animate__slideInUp');
+    if(document.getElementsByClassName('board-wrapper').length != 0){
+      document.getElementsByClassName('active-player-label')[0].classList.remove('show')
+    }
   };
 
   const showActivePlayerLabel = async () =>{

@@ -81,17 +81,16 @@ class RoomsController < ApplicationController
   def reset
     room = Room.find(params[:id])
     room.reset_room
-    #room.save!
     room.set_starting_player
     room.save!
 
     puts 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
     puts room.active_player
 
-    html = render( partial: 'boards/board',
+    html = render(partial: 'boards/board',
                   locals: { room: room, starting_player: room.active_player })
 
-    ActionCable.server.broadcast "room_channel_#{room.id}", html: html, object: 'reset'
+    ActionCable.server.broadcast "room_channel_#{room.id}", html: html, object: 'reset', starting_player: room.active_player
   end
 
   private
