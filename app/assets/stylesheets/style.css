@@ -642,6 +642,9 @@ h2.animate__animated.animate__tada{
 
 
 @media (max-width: 480px){
+  :root{
+    --border-size: 3px
+  }
   header{
     grid-template-areas: 'title title title';
     align-items: center;
