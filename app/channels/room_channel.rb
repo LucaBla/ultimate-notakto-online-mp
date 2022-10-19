@@ -25,6 +25,12 @@ class RoomChannel < ApplicationCable::Channel
     html = room.player_count.to_s
 
     html2 = ''
+
+    if room.player_count == 0
+      room.delete
+    elsif room.player_count == 2
+      html2 = ApplicationController.render(partial: 'boards/board', locals:{ room: room } )
+    end
     html3 = ApplicationController.render(partial: 'rooms/wait', locals:{ room: room } )
 
     ActionCable.server.broadcast "room_channel_#{room.id}", html: html, html2: html2, html3: html3, object: 'player_count'

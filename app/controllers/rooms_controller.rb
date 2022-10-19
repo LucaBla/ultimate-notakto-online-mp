@@ -84,13 +84,16 @@ class RoomsController < ApplicationController
     room.set_starting_player
     room.save!
 
-    puts 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
-    puts room.active_player
-
     html = render(partial: 'boards/board',
                   locals: { room: room, starting_player: room.active_player })
 
-    ActionCable.server.broadcast "room_channel_#{room.id}", html: html, object: 'reset', starting_player: room.active_player
+    if room.active_player == room.player1
+      starting_player = 1
+    else
+      starting_player = 2
+    end
+
+    ActionCable.server.broadcast "room_channel_#{room.id}", html: html, object: 'reset', starting_player: starting_player
   end
 
   private
