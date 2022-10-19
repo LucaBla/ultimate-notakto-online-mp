@@ -46,7 +46,8 @@ class RoomsController < ApplicationController
 
     played_piece_position = SubBoard.find(state_params[:sub_board_id]).move!(state_params[:row], state_params[:col], current_user) if state_params.has_key?(:col)
 
-    room.swap_active_player
+    room.swap_active_player if played_piece_position != nil
+
     room.update(room_params)
 
     if room.adjusted == false
@@ -55,20 +56,18 @@ class RoomsController < ApplicationController
       room.save!
     end
 
-    puts 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
-    puts room.active_player
-
-    if room.adjusted == true && room.reseted == false
-      possible_winner = room.get_winner(room.active_player)
+    if room.adjusted == true
+      possible_winner = room.get_winner(room.active_player) if room.reseted == false
+      possible_winner = room.get_winner(room.active_player) if room.reseted == true
     else
       possible_winner = room.get_winner(room.active_player) if room.reseted == false
-      possible_winner = room.active_player if room.reseted == true
+      possible_winner = room.get_winner(room.active_player) if room.reseted == true
     end
 
     if room.active_player == room.player1
-      player_num = 2
-    else
       player_num = 1
+    else
+      player_num = 2
     end
 
     html = render(partial: 'boards/board',
@@ -80,13 +79,19 @@ class RoomsController < ApplicationController
   end
 
   def reset
-    @room = Room.find(params[:id])
-    @room.reset_room
+    room = Room.find(params[:id])
+    room.reset_room
+    #room.save!
+    room.set_starting_player
+    room.save!
 
-    html = render( 'rooms/show',
-                  locals: { room: @room })
+    puts 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+    puts room.active_player
 
-    ActionCable.server.broadcast "room_channel_#{@room.id}", html: html, object: 'reset'
+    html = render( partial: 'boards/board',
+                  locals: { room: room, starting_player: room.active_player })
+
+    ActionCable.server.broadcast "room_channel_#{room.id}", html: html, object: 'reset'
   end
 
   private

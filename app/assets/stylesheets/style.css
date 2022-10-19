@@ -320,6 +320,18 @@ margin-right: 35px;
   width: 100px;
 }
 
+.replay-btn{
+  border-radius: 8px;
+  border: none;
+  padding: 10px 20px;
+  background-color: var(--orange);
+  color: var(--gainsboro);
+  font-weight: bold;
+  font-size: 20px;
+  margin-right: 20px;
+  width: 100px;
+}
+
 .modal-bg{
   display: flex;
   position: absolute;

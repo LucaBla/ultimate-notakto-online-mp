@@ -54,7 +54,7 @@
     <%= button_to 'Play Online', rooms_path, {method: :post} %>
   </template>
   <template id='replay-btn'>
-    <%= button_to 'Replay', reset_room_url, {method: :patch} %>
+    <%= button_to 'Replay', reset_room_url, method: :patch, class: 'replay-btn' %>
   </template>
 </body>
   <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>

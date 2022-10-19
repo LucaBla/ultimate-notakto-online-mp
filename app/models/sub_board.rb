@@ -13,7 +13,7 @@ class SubBoard < ApplicationRecord
   end
 
   def move!(row, col, current_user)
-    return if lost || current_user.id != room.active_player
+    return nil if lost || current_user.id != room.active_player
 
     state[row.to_s][col.to_s] = :x
 

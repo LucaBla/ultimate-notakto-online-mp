@@ -1,7 +1,9 @@
 <% game_over = room.game_over? %>
+<% starting_player = room.active_player if starting_player == nil %>
+<%= starting_player %>
 <% played_piece_position = nil if played_piece_position == nil %>
 <div id="<%= dom_id(room) %>" class="board board" data-gameover="<%=game_over%>"
-     data-active-player="<%=room.active_player%>">
+     data-active-player="<%=starting_player%>">
   <%# room.active_player %>
   <%= render 'rooms/state', room: room, game_over: game_over, played_piece_position: played_piece_position %>
 </div>

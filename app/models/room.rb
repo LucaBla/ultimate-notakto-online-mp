@@ -65,10 +65,8 @@ class Room < ApplicationRecord
 
       sub_board.save!
     end
-    self.adjusted = false
-    self.active_player = player1
+    #self.adjusted = false removed until there is a settings modal after resetting
     self.reseted = true
-    save!
   end
 
   def game_over?

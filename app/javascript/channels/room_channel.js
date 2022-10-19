@@ -18,9 +18,17 @@ if(document.getElementsByClassName("board-wrapper").length != 0){
   
     received(data) {
       // Called when there's incoming data on the websocket for this channel
+      const userId = document.getElementsByClassName('board-wrapper')[0].getAttribute('data-user-id')
       console.log(data)
       if(data.object === 'reset'){
-        document.getElementsByTagName('html')[0].innerHTML = data.html;
+        Music.playDreaming();
+        document.getElementsByClassName('board-wrapper')[0].innerHTML = data.html;
+        if(userId != document.getElementsByClassName('board')[0].getAttribute('data-active-player')){
+          document.getElementsByClassName('board')[0].classList.add('click-forbidden')
+        }
+        displayController.removeGameOverScreen();
+        displayController.hideWave();
+        document.getElementsByClassName('replay-btn')[0].remove()
       }
       if(data.player_count !== 2 && data.object !== 'player_count' && data.object !== 'modal'){
         return
@@ -39,12 +47,11 @@ if(document.getElementsByClassName("board-wrapper").length != 0){
         //document.getElementsByTagName("main")[0].innerHTML = data.html3;
       }
       if(data.object === 'player_count' && data.html === '2' &&
-         document.getElementsByClassName("submit-modal")[0]!= null){
+        document.getElementsByClassName("submit-modal")[0]!= null){
         document.getElementsByClassName("submit-modal")[0].disabled = false;
         document.getElementsByClassName("submit-modal")[0].classList.remove('disabled');
       }
       if(data.object === 'modal'){
-        const userId = document.getElementsByClassName('board-wrapper')[0].getAttribute('data-user-id')
         if(document.getElementsByClassName('modal')[0] != null){
           var modal = document.getElementsByClassName('modal')[0];
           Music.playDreaming();
@@ -58,7 +65,7 @@ if(document.getElementsByClassName("board-wrapper").length != 0){
         }
         document.getElementsByClassName("board-wrapper")[0].innerHTML = data.html;
         console.log(data.possible_winner)
-        if(userId == data.possible_winner){
+        if(userId != document.getElementsByClassName('board')[0].getAttribute('data-active-player')){
           document.getElementsByClassName('board')[0].classList.add('click-forbidden')
         }
         if(document.getElementsByClassName('board')[0].getAttribute('data-gameover') === 'true'){
