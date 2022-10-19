@@ -3,7 +3,6 @@ class RoomChannel < ApplicationCable::Channel
     stream_from "room_channel_#{params[:room_id]}"
     room = Room.find(params[:room_id])
     room.player_count += 1
-    puts room
     room.save
 
     html = room.player_count.to_s

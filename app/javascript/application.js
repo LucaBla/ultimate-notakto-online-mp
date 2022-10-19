@@ -16,11 +16,17 @@ if (window.location.pathname === '/'){
 }
 else{
   ModalManager.animateTitle();
-  document.getElementsByTagName('audio')[0].play();
+  if( document.getElementsByTagName('audio')[0].paused){
+    document.getElementsByTagName("body")[0].addEventListener("click", ()=>{
+      document.getElementsByTagName('audio')[0].play();
+    });
+  }
   document.getElementsByClassName('menu')[0].getElementsByClassName('buttons')[0].style.display = 'none';
   document.getElementsByTagName('header')[0].style.zIndex= '10000';
   document.getElementsByClassName('menu')[0].style.zIndex= '10000';
-  document.getElementById("link-copy-button").addEventListener("click", copyLink);
+  if(document.getElementById("link-copy-button") != undefined){
+        document.getElementById("link-copy-button").addEventListener("click", copyLink);
+  }
 }
 changeMobileWidget();
 

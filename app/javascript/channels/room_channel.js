@@ -8,12 +8,12 @@ if(document.getElementsByClassName("board-wrapper").length != 0){
   consumer.subscriptions.create({ channel: "RoomChannel", room_id: room_id }, {
     connected() {
       // Called when the subscription is ready for use on the server
-      console.log('connected to ' + room_id);
+      //console.log('connected to ' + room_id);
     },
   
     disconnected() {
       // Called when the subscription has been terminated by the server
-      console.log('disconnected');
+      //console.log('disconnected');
     },
   
     received(data) {
@@ -29,7 +29,9 @@ if(document.getElementsByClassName("board-wrapper").length != 0){
         }
         displayController.removeGameOverScreen();
         displayController.hideWave();
-        document.getElementsByClassName('replay-btn')[0].remove()
+        if(document.getElementsByClassName('replay-btn').length != 0){
+          document.getElementsByClassName('replay-btn')[0].remove()
+        }
       }
       if(data.player_count !== 2 && data.object !== 'player_count' && data.object !== 'modal'){
         return
