@@ -237,7 +237,7 @@ DEPENDENCIES
   jbuilder
   pg (~> 1.1)
   puma (~> 5.0)
-  rails (~> 7.0.3)
+  rails (~> 7.0.4)
   redis (~> 4.0)
   redis-namespace
   redis-rails
@@ -250,7 +250,7 @@ DEPENDENCIES
   webdrivers
 
 RUBY VERSION
-   ruby 2.7.4p191
+   ruby 3.1.2p20
 
 BUNDLED WITH
-   2.2.23
+   2.3.7

@@ -1,7 +1,7 @@
 class RoomsController < ApplicationController
   def show
     @room = Room.find_by!(code:params[:id])
-    RoomChannel.broadcast_to(@room, 'test')
+    #RoomChannel.broadcast_to(@room, 'test')
     if @room.player2 == @room.player1
       @room.player2 = nil
     end
@@ -73,9 +73,9 @@ class RoomsController < ApplicationController
     html = render(partial: 'boards/board',
                   locals: { room: room, played_piece_position: played_piece_position }, status: 204)
 
-    ActionCable.server.broadcast "room_channel_#{room.id}", html: html, object: 'modal',
+    ActionCable.server.broadcast "room_channel_#{room.id}", { html: html, object: 'modal',
                                                             possible_winner: possible_winner,
-                                                            possible_winner_player_num: player_num
+                                                            possible_winner_player_num: player_num }
   end
 
   def reset
@@ -93,7 +93,7 @@ class RoomsController < ApplicationController
       starting_player = 2
     end
 
-    ActionCable.server.broadcast "room_channel_#{room.id}", html: html, object: 'reset', starting_player: starting_player
+    ActionCable.server.broadcast "room_channel_#{room.id}", { html: html, object: 'reset', starting_player: starting_player }
   end
 
   private
