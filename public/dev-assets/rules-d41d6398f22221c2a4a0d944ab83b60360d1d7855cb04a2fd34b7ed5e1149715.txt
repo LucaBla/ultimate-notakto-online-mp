@@ -1,0 +1,39 @@
+<div>
+  </br>
+  <b>Ultimate Notakto</b> is a tic-tac-toe variant that combines <b>Notakto</b> and <b>Ultimate tic-tac-toe</b>. </br>
+  What makes <b>Notakto</b> special is that <b>both players</b> play the same piece <b>(X)</b>.</br>
+</div>
+
+<div>
+  </br>
+  The game is played on a board divided into <b>9 sub-boards</b>.</br>
+</div>
+
+</br><img src= "/dev-assets/text_rules/text_rules_1-be2241fa1789388b124de525bfbecc7b9ecbd971bf38d2a5b8907c6c9fc76413.png" alt="text_rules_1" class='txt-rules-img'></br></br>
+
+<div>
+  At the <b>beginning of the game</b>, the starting player is <b>free to decide</b> in which sub-board he wants to place his piece.</br>
+  The <b>following player</b> must then put his piece in the <b>sub-board corresponding</b> to the field in which the previous player placed his piece.</br>
+  If a player has to play a <b>sub-board that has already been lost</b>, he is <b>free to choose</b> which sub-board he wants to play next.</br>
+  This <b>principle</b> is maintained for the <b>rest of the game</b>.</br>
+</div>
+
+<div>
+  </br>(<b>Example</b>: if player one places his piece into a bottom left field, the next player must place his piece in the bottom left sub-board)</br>
+</div>
+
+</br><img src="/dev-assets/text_rules/text_rules_2-9878501ba27b7d99d91e9921046c87cbcd6b5edb956b83d8bf9c64bd40589688.png" alt="text_rules_2" class='txt-rules-img'> </br>
+</br><img src="/dev-assets/text_rules/text_rules_3-43a6a3a756579f36833f0cdf8bd8efe8e574cefe81681a81ccb6c750e4378423.png" alt="text_rules_3" class='txt-rules-img'> </br></br>
+
+<div>
+  </br>
+  A sub-board is <b>lost</b> if a player makes a <b>three-in-a-row</b> there.</br>
+</div>
+</br><img src="/dev-assets/text_rules/text_rules_4-30df7dcb37282a5d505232aaa2ddbc814f229ff1d7b24bccbbe4998c6c7fe545.png" alt="text_rules_4" class='txt-rules-img'></br></br>
+
+<div>
+</br>
+  If three lost <b>sub-boards</b> are in a row, the player that placed the <b>last piece</b> loses the game.
+</br>
+</div>
+</br><img src="/dev-assets/text_rules/text_rules_5-c03995c128cdf2946c47547d0244773c4cf4179f50702da6f1da9eca70f6f973.png" alt="text_rules_5" class='txt-rules-img'></br></br>
