@@ -5,9 +5,9 @@ class RoomsController < ApplicationController
     if @room.player2 == @room.player1
       @room.player2 = nil
     end
-    joining_player = current_user
-    if @room.player2.nil? && @room.player1 != joining_player.id
-      @room.player2 = joining_player.id
+    @joining_player = current_user
+    if @room.player2.nil? && @room.player1 != @joining_player.id
+      @room.player2 = @joining_player.id
       @room.save
     end
   end
