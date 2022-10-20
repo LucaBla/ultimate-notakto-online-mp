@@ -11,15 +11,15 @@ class ApplicationController < ActionController::Base
       @current_user = User.generate
       UserJob.perform_in(60.minutes, @current_user.id)
       session[:user_id] = @current_user.id
-      @current_user
+      #@current_user
     end
 
-    if @current_user.nil?
-      @current_user = User.generate
-      UserJob.perform_in(60.minutes, @current_user.id)
-      session[:user_id] = @current_user.id
-      @current_user
-    end
+    #if @current_user.nil?
+    #  @current_user = User.generate
+    #  UserJob.perform_in(60.minutes, @current_user.id)
+    #  session[:user_id] = @current_user.id
+      #@current_user
+    #end
 
     @current_user
   end
