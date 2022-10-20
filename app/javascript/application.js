@@ -2,10 +2,10 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 
-import * as Music from './modules/music.js';
-import * as ModalManager from './modules/modal.js';
-import * as GameSettings from './modules/gameSettings.js';
-import * as Rules from './modules/rules.js';
+import * as Music from './modules/music.js.erb';
+import * as ModalManager from './modules/modal.js.erb';
+import * as GameSettings from './modules/gameSettings.js.erb';
+import * as Rules from './modules/rules.js.erb';
 
 document.getElementsByClassName("play-btn")[0].addEventListener('click', GameSettings.openGameSettings);
 document.getElementsByClassName("rules-btn")[0].addEventListener('click', Rules.openRules);
