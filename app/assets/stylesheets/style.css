@@ -978,10 +978,13 @@ h2.animate__animated.animate__tada{
 
 @media (max-height: 500px){
   header{
-    min-height: 70px;
+    min-height: 60px;
   }
-  .menu{
-    min-height: 70px;
+  header a h1{
+    font-size: 25px;
+  }
+  header .title img{
+    width: 30px;
   }
   .title a h1{
     margin-top: 10px;
@@ -1011,6 +1014,18 @@ h2.animate__animated.animate__tada{
   .x-mp svg{
     width: 20px;
     height: 20px;
+  }
+  .menu{
+    min-height: 60px;
+  }
+  .buttons{
+    margin-bottom: 0px;
+  }
+  .play-btn{
+    padding: 3px 0px;
+  }
+  .rules-btn{
+    padding: 3px 0px;
   }
 }
 
