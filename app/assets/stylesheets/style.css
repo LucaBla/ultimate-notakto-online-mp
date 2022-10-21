@@ -43,7 +43,7 @@ header{
   background-image: url('wave.svg');
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center center;
+  background-position: center bottom;
   width: 100vw;
   height: auto;
   min-height: 160px;
@@ -293,11 +293,10 @@ margin-right: 35px;
   background-image: url(wave-bottom.svg);
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center center;
+  background-position: center top;
   width: 100vw;
   height: auto;
   min-height: 160px;
-  max-height: auto;
   z-index: 1;
 }
 
@@ -580,15 +579,6 @@ h2.animate__animated.animate__tada{
   font-size: 16px;
 }
 
-@media (min-width: 2000px){
-  header{
-    background-position: 0vh 100%;
-  }
-  .menu{
-    background-position: 0vh -0%;
-  }
-}
-
 @media (max-width: 1350px){
   header{
     grid-template-columns: 1fr 2fr 1fr;
@@ -611,13 +601,21 @@ h2.animate__animated.animate__tada{
   }
 }
 
+@media (max-width: 750px){
+  header .title h1{
+    font-size: 5vw;
+  }
+  header .title img{
+    width: 40px;
+  }
+}
+
 @media (max-width: 600px) and (min-height: 480px){
   header .title h1{
     font-size: 26px;
   }
   header .title img{
     width: 26px;
- 
   }
   header{
     align-items: center;
@@ -633,10 +631,14 @@ h2.animate__animated.animate__tada{
   }
 }
 
-@media (max-width: 520px){
+@media (max-width: 580px){
   header{
     grid-template-areas: 'title title sound';
     align-items: center;
+  }
+  .cell{
+    width: 40px;
+    height: 40px;
   }
 }
 
@@ -653,15 +655,11 @@ h2.animate__animated.animate__tada{
     font-size: 23px;
     height: 50px;
   }
-  header .title{
-    margin-top: -20px;
-  }
   header .title h1{
     font-size: 30px;
   }
   header .title img{
     width: 30px;
-    margin-left: 10px;
   }
   .slider-wrapper{
     display: none;
@@ -686,24 +684,24 @@ h2.animate__animated.animate__tada{
     margin-left: 5px;
   }
   .cell{
-    width: 30px !important;
-    height: 30px !important;
+    width: 35px !important;
+    height: 35px !important;
   }
   .x{
-    width: 20px !important;
-    height: 20px !important;
+    width: 25px !important;
+    height: 25px !important;
   }
   .x svg{
-    width: 20px !important;
-    height: 20px !important;
+    width: 25px !important;
+    height: 25px !important;
   }
   .x-mp{
-    width: 20px !important;
-    height: 20px !important;
+    width: 25px !important;
+    height: 25px !important;
   }
   .x-mp svg{
-    width: 20px !important;
-    height: 20px !important;
+    width: 25px !important;
+    height: 25px !important;
   }
   .winner-header{
     font-size: 32px;
@@ -726,12 +724,84 @@ h2.animate__animated.animate__tada{
   }
 }
 
+@media (max-width: 400px){
+  .cell{
+    width: 30px !important;
+    height: 30px !important;
+  }
+  .x{
+    width: 20px !important;
+    height: 20px !important;
+  }
+  .x svg{
+    width: 20px !important;
+    height: 20px !important;
+  }
+  .x-mp{
+    width: 20px !important;
+    height: 20px !important;
+  }
+  .x-mp svg{
+    width: 20px !important;
+    height: 20px !important;
+  }
+}
+
+@media (max-width: 350px){
+  .cell{
+    width: 25px !important;
+    height: 25px !important;
+  }
+  .x{
+    width: 15px !important;
+    height: 15px !important;
+  }
+  .x svg{
+    width: 15px !important;
+    height: 15px !important;
+  }
+  .x-mp{
+    width: 15px !important;
+    height: 15px !important;
+  }
+  .x-mp svg{
+    width: 15px !important;
+    height: 15px !important;
+  }
+}
+
+@media (max-width: 310px){
+  .sub-board{
+    padding: 0px;
+  }
+  .cell{
+    width: 20px !important;
+    height: 20px !important;
+  }
+  .x{
+    width: 10px !important;
+    height: 10px !important;
+  }
+  .x svg{
+    width: 10px !important;
+    height: 10px !important;
+  }
+  .x-mp{
+    width: 10px !important;
+    height: 10px !important;
+  }
+  .x-mp svg{
+    width: 10px !important;
+    height: 10px !important;
+  }
+}
+
 @media (max-height: 900px){
   :root{
     --main-slide: 7vh;
   }
   header{
-    min-height: 14vh;
+    min-height: 130px;
   }
   header h1{
     font-size: 40px;
@@ -757,7 +827,7 @@ h2.animate__animated.animate__tada{
   }
 
   .menu{
-    min-height: 14vh;
+    min-height: 130px;
   }
 }
 
@@ -766,8 +836,7 @@ h2.animate__animated.animate__tada{
     --main-slide: 8.5vh;
   }
   header{
-    min-height: 17vh;
-    top: -1vh;
+    min-height: 100px;
   }
   header h1{
     font-size: 38px;
@@ -797,8 +866,7 @@ h2.animate__animated.animate__tada{
     height: 36px;
   }
   .menu{
-    min-height: 17vh;
-    bottom: -1vh;
+    min-height: 100px;
   }
   .buttons{
     margin-bottom: 10px;
@@ -825,10 +893,6 @@ h2.animate__animated.animate__tada{
 @media (max-height: 600px){
   :root{
     --main-slide: 9vh;
-  }
-  header{
-    min-height: 18vh;
-    top: -2vh;
   }
   header h1{
     font-size: 35px;
@@ -859,31 +923,30 @@ h2.animate__animated.animate__tada{
     border-right: 3px solid var(--currant);
   }
   .cell{
-    width: 3vw;
-    height: 5.7vh;
+    width: 30px;
+    height: 30px;
   }
   .x{
-    width: 2vw;
-    height: 4.7vh;
+    width: 25px;
+    height: 25px;
   }
   .x svg{
-    width: 2vw;
-    height: 4.7vh;
+    width: 25px;
+    height: 25px;
   }
   .x-mp{
-    width: 2vw;
-    height: 4.7vh;
+    width: 25px;
+    height: 25px;
   }
   .x-mp svg{
-    width: 2vw;
-    height: 4.7vh;
+    width: 25px;
+    height: 25px;
   }
   .winner-header{
     font-size: 5vw;
   }
   .menu{
-    min-height: 18vh;
-    bottom: -1vh;
+    min-height: 100px;
   }
   .play-btn{
     width: 70px;
@@ -913,16 +976,53 @@ h2.animate__animated.animate__tada{
   }
 }
 
+@media (max-height: 500px){
+  header{
+    min-height: 70px;
+  }
+  .menu{
+    min-height: 70px;
+  }
+  .title a h1{
+    margin-top: 10px;
+  }
+  .title img{
+    margin-bottom: 10px;
+  }
+  .slider-wrapper{
+    margin-top: 0px;
+  }
+  .cell{
+    width: 25px;
+    height: 25px;
+  }
+  .x{
+    width: 20px;
+    height: 20px;
+  }
+  .x svg{
+    width: 20px;
+    height: 20px;
+  }
+  .x-mp{
+    width: 20px;
+    height: 20px;
+  }
+  .x-mp svg{
+    width: 20px;
+    height: 20px;
+  }
+}
+
 @media (max-height: 400px){
   :root{
     --main-slide: 27.5px;
   }
   header{
-    min-height: 15vh;
+    min-height: 14vh;
     background-image: none;
     background-color: var(--currant);
     border-bottom: 5px solid var(--gainsboro);
-    top: 0vh;
   }
   header .title{
     margin-top: 0px;
