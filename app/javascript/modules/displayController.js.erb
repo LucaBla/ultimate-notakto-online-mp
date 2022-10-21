@@ -40,9 +40,7 @@ const displayController = (() => {
   };
 
   const showActivePlayerLabel = async () =>{
-    const activePlayerLabel = document.createElement('div');
-    activePlayerLabel.classList.add('active-player-label');
-    document.getElementsByClassName('menu')[0].appendChild(activePlayerLabel);
+    document.getElementsByClassName('active-player-label')[0].classList.remove('hidden');
   };
 
   const reloadActivePlayerLabel = (playerNumber) => {
@@ -51,7 +49,7 @@ const displayController = (() => {
   };
 
   const hideActivePlayerLabel = () =>{
-    document.getElementsByClassName('active-player-label')[0].remove();
+    document.getElementsByClassName('active-player-label')[0].classList.add('hidden');
   };
 
   const addPieceToHTML = (tar) => {

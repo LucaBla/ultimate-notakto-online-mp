@@ -23,12 +23,13 @@ if(document.getElementsByClassName("board-wrapper").length != 0){
       if(data.object === 'reset'){
         Music.playDreaming();
         document.getElementsByClassName('board-wrapper')[0].innerHTML = data.html;
-        document.getElementsByClassName('active-player-label')[0].innerHTML = data.starting_player
+        displayController.showActivePlayerLabel();
+        document.getElementsByClassName('active-player-label')[0].innerHTML = 'Player ' + data.starting_player + 's turn'
         if(userId != document.getElementsByClassName('board')[0].getAttribute('data-active-player')){
           document.getElementsByClassName('board')[0].classList.add('click-forbidden')
         }
         displayController.removeGameOverScreen();
-        displayController.hideWave();
+        displayController.showActivePlayerLabel();
         if(document.getElementsByClassName('replay-btn').length != 0){
           document.getElementsByClassName('replay-btn')[0].remove()
         }
@@ -63,15 +64,15 @@ if(document.getElementsByClassName("board-wrapper").length != 0){
           var modal = document.getElementsByClassName('modal')[0];
           Music.playDreaming();
           modal.classList.add('modal', 'animate__animated', 'animate__bounceOutRight')
+          displayController.showActivePlayerLabel();
           modal.addEventListener('animationend', () =>{
             document.getElementsByClassName('modal-bg')[0].remove();
-            displayController.hideWave();
           });
         }else{
           Music.stroke.play();
         }
         document.getElementsByClassName("board-wrapper")[0].innerHTML = data.html;
-        document.getElementsByClassName('active-player-label')[0].innerHTML = data.possible_winner_player_num
+        document.getElementsByClassName('active-player-label')[0].innerHTML = 'Player ' + data.possible_winner_player_num + 's turn'
         if(userId != document.getElementsByClassName('board')[0].getAttribute('data-active-player')){
           document.getElementsByClassName('board')[0].classList.add('click-forbidden')
         }
