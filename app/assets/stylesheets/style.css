@@ -19,7 +19,7 @@
 body{
   background-color: var(--orange);
   display: grid;
-  grid-template-rows: 0fr 3fr 0fr;
+  grid-template-rows: 15% 70% 15%;
   height: 100vh;
   width: 100vw;
   padding: 0px;
@@ -46,7 +46,6 @@ header{
   background-position: center bottom;
   width: 100vw;
   height: auto;
-  min-height: 160px;
   max-height: auto;
   text-align: center;
   z-index: 1;
@@ -296,7 +295,6 @@ margin-right: 35px;
   background-position: center top;
   width: 100vw;
   height: auto;
-  min-height: 160px;
   z-index: 1;
 }
 
@@ -800,9 +798,6 @@ h2.animate__animated.animate__tada{
   :root{
     --main-slide: 7vh;
   }
-  header{
-    min-height: 130px;
-  }
   header h1{
     font-size: 40px;
   }
@@ -825,18 +820,14 @@ h2.animate__animated.animate__tada{
     height: 45px;
     width: 45px;
   }
-
-  .menu{
-    min-height: 130px;
-  }
 }
 
 @media (max-height: 750px){
   :root{
     --main-slide: 8.5vh;
   }
-  header{
-    min-height: 100px;
+  body{
+    grid-template-rows: 16% 68% 16%;
   }
   header h1{
     font-size: 38px;
@@ -865,9 +856,6 @@ h2.animate__animated.animate__tada{
     width: 36px;
     height: 36px;
   }
-  .menu{
-    min-height: 100px;
-  }
   .buttons{
     margin-bottom: 10px;
   }
@@ -894,8 +882,15 @@ h2.animate__animated.animate__tada{
   :root{
     --main-slide: 9vh;
   }
+  body{
+    grid-template-rows: 18% 64% 18%;
+  }
   header h1{
     font-size: 35px;
+  }
+  .slider-wrapper{
+    margin-top: 20px;
+    margin-right: 20px;
   }
   .b-row:not(:first-child){
     margin-top: 5px;
@@ -945,9 +940,6 @@ h2.animate__animated.animate__tada{
   .winner-header{
     font-size: 5vw;
   }
-  .menu{
-    min-height: 100px;
-  }
   .play-btn{
     width: 70px;
     font-size: 14px;
@@ -977,9 +969,6 @@ h2.animate__animated.animate__tada{
 }
 
 @media (max-height: 500px){
-  header{
-    min-height: 60px;
-  }
   header a h1{
     font-size: 25px;
   }
@@ -991,9 +980,6 @@ h2.animate__animated.animate__tada{
   }
   .title img{
     margin-bottom: 10px;
-  }
-  .slider-wrapper{
-    margin-top: 0px;
   }
   .cell{
     width: 25px;
@@ -1015,9 +1001,6 @@ h2.animate__animated.animate__tada{
     width: 20px;
     height: 20px;
   }
-  .menu{
-    min-height: 60px;
-  }
   .buttons{
     margin-bottom: 0px;
   }
@@ -1034,7 +1017,6 @@ h2.animate__animated.animate__tada{
     --main-slide: 27.5px;
   }
   header{
-    min-height: 14vh;
     background-image: none;
     background-color: var(--currant);
     border-bottom: 5px solid var(--gainsboro);
@@ -1084,7 +1066,6 @@ h2.animate__animated.animate__tada{
     height: 4.5vh;
   }
   .menu{
-    min-height: 50px;
     height: fit-content;
     background-image: none;
     background-color: var(--currant);
