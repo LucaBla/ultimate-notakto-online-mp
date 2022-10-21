@@ -10,6 +10,7 @@ import * as Rules from './modules/rules.js';
 document.getElementsByClassName("play-btn")[0].addEventListener('click', GameSettings.openGameSettings);
 document.getElementsByClassName("rules-btn")[0].addEventListener('click', Rules.openRules);
 document.getElementsByClassName("vol")[0].addEventListener("input", Music.setVol);
+document.addEventListener('visibilitychange', handleVisibilityChange, false);
 
 if (window.location.pathname === '/'){
   ModalManager.openMusicModal();
@@ -59,4 +60,14 @@ async function changeMobileWidget(){
   document.getElementsByClassName('floatingchat-container-mobi')[0].style.width = '50px';
 
   document.getElementsByClassName('floatingchat-container-wrap-mobi')[0].style.width = '50px';
-}import "channels"
+}
+
+function handleVisibilityChange() {
+  if (document.hidden) {
+    document.getElementsByTagName('audio')[0].pause();
+  } else {
+    document.getElementsByTagName('audio')[0].play();
+  }
+}
+
+import "channels"
