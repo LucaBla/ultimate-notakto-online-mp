@@ -169,15 +169,9 @@ margin-right: 35px;
 }
 
 .active-player-label{
-  position: absolute;
-  display: none;
-  top: 2vh;
-  background-color: var(--currant);
-  padding: 10px;
-  border-radius: 8px;
+  display: block;
   color: var(--gainsboro);
   font-size: 20px;
-  z-index: 20;
 }
 
 .hide-active-player-label{
