@@ -1,14 +1,6 @@
 class RoomsController < ApplicationController
   def show
     @room = Room.find_by!(code:params[:id])
-    #RoomChannel.broadcast_to(@room, 'test')
-    #if @room.player2 == @room.player1
-    #  @room.player2 = nil
-    #end
-    #if @room.player2.nil? && @room.player1 != current_user.id
-    #  @room.player2 = current_user.id
-    #  @room.save
-    #end
   end
 
   def new
@@ -50,19 +42,13 @@ class RoomsController < ApplicationController
 
     room.update(room_params)
 
-    if room.adjusted == false
+    if room.adjusted == false && !room_params[:player2].present?
       room.set_starting_player
       room.adjusted = true
       room.save!
     end
 
-    if room.adjusted == true
-      possible_winner = room.get_winner(room.active_player) if room.reseted == false
-      possible_winner = room.get_winner(room.active_player) if room.reseted == true
-    else
-      possible_winner = room.get_winner(room.active_player) if room.reseted == false
-      possible_winner = room.get_winner(room.active_player) if room.reseted == true
-    end
+    possible_winner = room.get_winner(room.active_player)
 
     if room.active_player == room.player1
       player_num = 1
