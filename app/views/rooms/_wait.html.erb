@@ -1,6 +1,6 @@
 <div class="modal-bg select-starting-player-modal">
   <div class="modal animate__animated animate__bounceInLeft">
     <h2>Please Wait..</h2>
-    <%= @joining_player.id %>
+    <%= render 'rooms/second_player_form', room: room, current_user: current_user %>
   </div>
 </div>

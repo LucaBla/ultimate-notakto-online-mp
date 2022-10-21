@@ -1,7 +1,7 @@
 <div class="modal-bg select-starting-player-modal">
   <div class="modal animate__animated animate__bounceInLeft">
     <h2>Create a Game</h2>
-    <%= @joining_player.id %>
+    <%= current_user.id %>
     <%= form_with model: room do |form| %>
       <div>
         <%= form.label :starting_player %>
@@ -12,7 +12,7 @@
         <%= button_tag 'Copy', type: 'button', id: 'link-copy-button' %>
       </div>
       <div class="submit-btn-wrapper-mp">
-        <% if room.player_count != 2 %>
+        <% if room.player_count != 2 || room.player2 == nil%>
           <%= form.submit 'Start', class: 'submit-modal disabled', disabled: true %>
         <%else%>
           <%= form.submit 'Start', class: 'submit-modal'%>

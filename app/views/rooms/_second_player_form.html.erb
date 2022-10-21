@@ -1,0 +1,11 @@
+<% if room.player2 == nil %>
+  <%= form_with model: room do |form| %>
+    <div>
+      <%= form.hidden_field :player2, value: current_user.id %>
+    </div>
+    <div class="submit-btn-wrapper-mp">
+      <%= form.submit 'Join', class: 'submit-player2'%>
+    </div>
+  <%end%>
+<%end%>
+

@@ -1,9 +1,9 @@
 <body>
   <% if @room.adjusted == false %>
-    <% if current_user.id == @room.player1 %>
-      <%=render 'rooms/form', room: @room, joining_player: @joining_player %>
+    <% if current_user.id == @room.player1 && @room.adjusted == false %>
+      <%=render 'rooms/form', room: @room%>
     <% else %>
-      <%= render 'rooms/wait', joining_player: @joining_player%>
+      <%= render 'rooms/wait', room: @room, current_user: current_user%>
     <%end%>
   <%end%>
   <header>
@@ -23,7 +23,7 @@
       
     </div>
     <%# turbo_stream_from dom_id(@room.board) %>
-    <div class="board-wrapper" data-room-id="<%=@room.try(:id)%>" data-user-id="<%=@joining_player.id%>" data-host-id ="<%=@room.player1%>">
+    <div class="board-wrapper" data-room-id="<%=@room.try(:id)%>" data-user-id="<%=current_user.id%>" data-host-id ="<%=@room.player1%>">
       <%# render @room.board, room: @room%>
       <%= render 'boards/board', room: @room%>
     </div>

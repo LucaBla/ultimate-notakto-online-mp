@@ -2,14 +2,13 @@ class RoomsController < ApplicationController
   def show
     @room = Room.find_by!(code:params[:id])
     #RoomChannel.broadcast_to(@room, 'test')
-    if @room.player2 == @room.player1
-      @room.player2 = nil
-    end
-    @joining_player = current_user
-    if @room.player2.nil? && @room.player1 != @joining_player.id
-      @room.player2 = @joining_player.id
-      @room.save
-    end
+    #if @room.player2 == @room.player1
+    #  @room.player2 = nil
+    #end
+    #if @room.player2.nil? && @room.player1 != current_user.id
+    #  @room.player2 = current_user.id
+    #  @room.save
+    #end
   end
 
   def new
@@ -74,9 +73,13 @@ class RoomsController < ApplicationController
     html = render(partial: 'boards/board',
                   locals: { room: room, played_piece_position: played_piece_position }, status: 204)
 
-    ActionCable.server.broadcast "room_channel_#{room.id}", { html: html, object: 'modal',
-                                                            possible_winner: possible_winner,
-                                                            possible_winner_player_num: player_num }
+    if(room_params[:player2].present?)
+      ActionCable.server.broadcast "room_channel_#{room.id}", {object: 'player_created'}
+    else
+      ActionCable.server.broadcast "room_channel_#{room.id}", { html: html, object: 'modal',
+                                                                possible_winner: possible_winner,
+                                                                possible_winner_player_num: player_num }
+    end
   end
 
   def reset
@@ -100,7 +103,7 @@ class RoomsController < ApplicationController
   private
 
   def room_params
-    params.require(:room).permit(:starting_player)
+    params.require(:room).permit(:starting_player, :player2)
   end
 
   def state_params
