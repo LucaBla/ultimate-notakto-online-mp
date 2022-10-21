@@ -19,6 +19,7 @@ else{
   ModalManager.animateTitle();
   if( document.getElementsByTagName('audio')[0].paused){
     document.getElementsByTagName("body")[0].addEventListener("click", ()=>{
+      document.getElementsByTagName('audio')[0].volume = document.getElementsByClassName('vol')[0].value /100;
       document.getElementsByTagName('audio')[0].play();
     });
   }
