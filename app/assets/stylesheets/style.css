@@ -970,6 +970,9 @@ h2.animate__animated.animate__tada{
 }
 
 @media (max-height: 500px){
+  body{
+    grid-template-rows: 15% 70% 15%;
+  }
   header a h1{
     font-size: 25px;
   }
@@ -981,6 +984,9 @@ h2.animate__animated.animate__tada{
   }
   .title img{
     margin-bottom: 10px;
+  }
+  .slider-wrapper{
+    margin-top: 5px;
   }
   .cell{
     width: 25px;
@@ -1096,6 +1102,9 @@ h2.animate__animated.animate__tada{
 }
 
 @media (max-height: 300px){
+  body{
+    grid-template-rows: 12% 76% 12%;
+  }
   header .title h1{
     font-size: 7vh;
   }
