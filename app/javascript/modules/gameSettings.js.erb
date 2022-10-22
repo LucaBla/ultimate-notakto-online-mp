@@ -5,7 +5,7 @@ import gameMaster from './gameMaster.js';
 function openGameSettings() {
   var modal = ModalManager.createModal();
 
-  Music.whoosh.play();
+  Music.playSound(Music.whoosh);
   populateGameSettings(modal);
 
 }
@@ -115,7 +115,7 @@ function openMPModal(){
 
   ModalManager.animateTitle();
 
-  Music.whoosh.play();
+  Music.playSound(Music.whoosh);
 
   populateMPSettings(modal);
 }

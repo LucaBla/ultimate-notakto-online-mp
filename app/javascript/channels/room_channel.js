@@ -69,7 +69,7 @@ if(document.getElementsByClassName("board-wrapper").length != 0){
             document.getElementsByClassName('modal-bg')[0].remove();
           });
         }else{
-          Music.stroke.play();
+          Music.playSound(Music.stroke);
         }
         document.getElementsByClassName("board-wrapper")[0].innerHTML = data.html;
         document.getElementsByClassName('active-player-label')[0].innerHTML = 'Player ' + data.possible_winner_player_num + 's turn'
@@ -85,7 +85,7 @@ if(document.getElementsByClassName("board-wrapper").length != 0){
           }
         }
         if(document.getElementsByClassName('animate__flash').length != 0)
-          Music.lostBoardsSound.play();
+          Music.playSound(Music.lostBoardsSound);
       }
     }
   });

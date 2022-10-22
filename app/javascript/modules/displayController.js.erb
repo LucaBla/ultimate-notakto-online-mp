@@ -53,13 +53,13 @@ const displayController = (() => {
   };
 
   const addPieceToHTML = (tar) => {
-    Music.stroke.play();
+    Music.playSound(Music.stroke);
     tar.appendChild(document.getElementsByTagName('template')[0].content.cloneNode(true));
   };
 
   const closeSubBoard = (evt) => {
     const subBoard = evt.currentTarget.parentElement.parentElement;
-    Music.lostBoardsSound.play();
+    Music.playSound(Music.lostBoardsSound);
     subBoard.classList.add('lost-subboard', 'animate__animated', 'animate__flash');
     for(const row of Array.from(subBoard.children)){
       for(const cell of Array.from(row.children)){
@@ -96,7 +96,7 @@ const displayController = (() => {
   const showGameOverScreen = (winner) => {
     document.getElementsByTagName('audio')[0].pause();
     document.getElementsByTagName('audio')[0].src = '<%= asset_path("Chiptronical.mp3") %>';
-    document.getElementsByTagName('audio')[0].play();
+    Music.playSound(document.getElementsByTagName('audio')[0]);
 
     document.getElementsByTagName('main')[0].classList.remove('slide-down-main');
     
@@ -113,7 +113,7 @@ const displayController = (() => {
   const showGameOverScreenMP = (winner) => {
     document.getElementsByTagName('audio')[0].pause();
     document.getElementsByTagName('audio')[0].src = '<%= asset_path("Chiptronical.mp3") %>';
-    document.getElementsByTagName('audio')[0].play();
+    Music.playSound(document.getElementsByTagName('audio')[0]);
 
     document.getElementsByTagName('main')[0].classList.remove('slide-down-main');
     

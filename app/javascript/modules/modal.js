@@ -17,6 +17,7 @@ function createModal(){
   modalBg.appendChild(modal);
 
   document.getElementsByTagName('body')[0].prepend(modalBg);
+  Music.playSound(Music.whoosh);
 
   return modal;
 }
@@ -24,7 +25,8 @@ function createModal(){
 function closeModal(){
   var modal = document.getElementsByClassName('modal')[0];
 
-  Music.whoosh.play();
+  
+  Music.playSound(Music.whoosh);
   modal.classList.add('modal', 'animate__animated', 'animate__bounceOutRight')
   modal.addEventListener('animationend', () =>{
     document.getElementsByClassName('modal-bg')[0].remove();
@@ -52,7 +54,7 @@ function openMusicModal(){
   musicBtn.addEventListener('click', closeModal);
   musicBtn.addEventListener('click', ()=>{
     document.getElementsByTagName('audio')[0].load();
-    document.getElementsByTagName('audio')[0].play();
+    Music.playSound(document.getElementsByTagName('audio')[0]);
     document.getElementsByTagName('audio')[0].volume = document.getElementsByClassName('vol')[0].value /100;
     Music.stroke.volume = document.getElementsByClassName('vol')[0].value /100;
     Music.whoosh.volume = document.getElementsByClassName('vol')[0].value /100;
@@ -62,8 +64,8 @@ function openMusicModal(){
   });
   noMusicBtn.addEventListener('click', closeModal);
   noMusicBtn.addEventListener('click', () =>{
-    document.getElementsByTagName('audio')[0].load();
-    document.getElementsByTagName('audio')[0].play();
+    Music.muteAll();
+    console.log(Music.muted);
     document.getElementsByTagName('audio')[0].volume = 0;
     Music.stroke.volume = 0;
     Music.lostBoardsSound.volume = 0;

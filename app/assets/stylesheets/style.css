@@ -119,6 +119,11 @@ input[type='submit']:hover{
   margin-right: 5px;
 }
 
+.fa-volume-mute{
+  color: var(--gainsboro);
+  margin-right: 5px;
+}
+
 .hidden{
   display: none !important;
 }

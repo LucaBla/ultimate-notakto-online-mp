@@ -4,7 +4,6 @@ import * as Music from './music.js';
 function openRules(){
   var modal = ModalManager.createModal();
 
-  Music.whoosh.play();
   populateRules(modal);
 }
 
@@ -53,20 +52,17 @@ function ShowTextRules(){
   var header = document.createElement('h2');
   var rules = document.createElement('div');
 
-  Music.whoosh.play();
-
-  modal.classList.add('modal', 'animate__animated', 'animate__bounceOutRight')
+  ModalManager.closeModal();
 
   modal.addEventListener('animationend', () =>{
-    document.getElementsByClassName('modal-bg')[0].remove();
-    header.textContent = 'Notakto Rules'
     modal = ModalManager.createModal();
+    header.textContent = 'Notakto Rules'
     modal.classList.add('scroll-modal');
-    fetchRules();
     modal.appendChild(closeBtn);
     modal.appendChild(header);
     modal.appendChild(rules);
     rules.classList.add('text-rules');
+    fetchRules();
 
     closeBtn.innerHTML ='<i class="fas fa-times"></i>';
     closeBtn.classList.add('close-btn');
@@ -82,14 +78,11 @@ function ShowCredits(){
   var credits = document.createElement('div');
   var feedback = document.createElement('div');
 
-  Music.whoosh.play();
-
-  modal.classList.add('modal', 'animate__animated', 'animate__bounceOutRight')
+  ModalManager.closeModal();
 
   modal.addEventListener('animationend', () =>{
-    document.getElementsByClassName('modal-bg')[0].remove();
-    header.textContent = 'Credits'
     modal = ModalManager.createModal();
+    header.textContent = 'Credits'
     modal.appendChild(closeBtn);
     modal.appendChild(header);
     modal.appendChild(credits);

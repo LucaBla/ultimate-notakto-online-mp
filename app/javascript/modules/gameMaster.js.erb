@@ -1,6 +1,7 @@
 import player from './player.js';
 import gameBoard from './gameBoard.js';
 import displayController from './displayController.js';
+import * as Music from './music.js';
 
 const gameMaster = (() => {
   let activePlayer = null;
@@ -30,7 +31,7 @@ const gameMaster = (() => {
 
     document.getElementsByTagName('audio')[0].pause();
     document.getElementsByTagName('audio')[0].src = '<%= asset_path("Dreaming.mp3") %>';
-    document.getElementsByTagName('audio')[0].play();
+    Music.playSound(document.getElementsByTagName('audio')[0]);
   };
 
   const end = () =>{

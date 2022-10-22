@@ -9,6 +9,7 @@ import * as Rules from './modules/rules.js';
 
 document.getElementsByClassName("play-btn")[0].addEventListener('click', GameSettings.openGameSettings);
 document.getElementsByClassName("rules-btn")[0].addEventListener('click', Rules.openRules);
+document.getElementsByClassName("mute-btn")[0].addEventListener('click', Music.changeMute);
 document.getElementsByClassName("vol")[0].addEventListener("input", Music.setVol);
 document.addEventListener('visibilitychange', handleVisibilityChange, false);
 
@@ -19,8 +20,8 @@ else{
   ModalManager.animateTitle();
   if( document.getElementsByTagName('audio')[0].paused){
     document.getElementsByTagName("body")[0].addEventListener("click", ()=>{
-      document.getElementsByTagName('audio')[0].volume = document.getElementsByClassName('vol')[0].value /100;
-      document.getElementsByTagName('audio')[0].play();
+        document.getElementsByTagName('audio')[0].volume = document.getElementsByClassName('vol')[0].value /100;
+        Music.playSound(document.getElementsByTagName('audio')[0]);
     });
   }
   document.getElementsByClassName('menu')[0].getElementsByClassName('buttons')[0].style.display = 'none';
@@ -67,7 +68,7 @@ function handleVisibilityChange() {
   if (document.hidden) {
     document.getElementsByTagName('audio')[0].pause();
   } else {
-    document.getElementsByTagName('audio')[0].play();
+    Music.playSound(document.getElementsByTagName('audio')[0]);
   }
 }
 
