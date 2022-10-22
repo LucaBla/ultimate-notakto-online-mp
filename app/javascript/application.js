@@ -18,12 +18,7 @@ if (window.location.pathname === '/'){
 }
 else{
   ModalManager.animateTitle();
-  if( document.getElementsByTagName('audio')[0].paused){
-    document.getElementsByTagName("body")[0].addEventListener("click", ()=>{
-        document.getElementsByTagName('audio')[0].volume = document.getElementsByClassName('vol')[0].value /100;
-        Music.playSound(document.getElementsByTagName('audio')[0]);
-    });
-  }
+  document.getElementsByTagName('audio')[0].volume = document.getElementsByClassName('vol')[0].value /100;
   document.getElementsByClassName('menu')[0].getElementsByClassName('buttons')[0].style.display = 'none';
   document.getElementsByTagName('header')[0].style.zIndex= '10000';
   document.getElementsByClassName('menu')[0].style.zIndex= '10000';
@@ -67,7 +62,7 @@ async function changeMobileWidget(){
 function handleVisibilityChange() {
   if (document.hidden) {
     document.getElementsByTagName('audio')[0].pause();
-  } else {
+  } else if(Music.muted === false){
     Music.playSound(document.getElementsByTagName('audio')[0]);
   }
 }

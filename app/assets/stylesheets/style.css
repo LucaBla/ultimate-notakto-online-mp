@@ -115,11 +115,13 @@ input[type='submit']:hover{
 }
 
 .fa-volume-up{
+  cursor: pointer;
   color: var(--gainsboro);
   margin-right: 5px;
 }
 
 .fa-volume-mute{
+  cursor: pointer;
   color: var(--gainsboro);
   margin-right: 5px;
 }
@@ -645,7 +647,7 @@ h2.animate__animated.animate__tada{
     --border-size: 3px
   }
   header{
-    grid-template-areas: 'title title title';
+    grid-template-areas: 'title title sound';
     align-items: center;
   }
   .btn-wrapper button{
@@ -659,10 +661,9 @@ h2.animate__animated.animate__tada{
     width: 30px;
   }
   .slider-wrapper{
-    display: none;
     font-size: 14px;
     height: fit-content;
-    margin-top: 40px !important;
+    margin-top: 0px !important;
     margin-right: 0px;
     justify-self: center;
     align-self:baseline;
@@ -671,6 +672,7 @@ h2.animate__animated.animate__tada{
     height: 20px;
   }
   .slider-wrapper .vol{
+    display: none;
     width: 60px;
     margin-left: -3px;
   }

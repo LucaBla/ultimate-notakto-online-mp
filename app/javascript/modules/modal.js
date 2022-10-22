@@ -54,7 +54,7 @@ function openMusicModal(){
   musicBtn.addEventListener('click', closeModal);
   musicBtn.addEventListener('click', ()=>{
     document.getElementsByTagName('audio')[0].load();
-    Music.playSound(document.getElementsByTagName('audio')[0]);
+    Music.changeMute();
     document.getElementsByTagName('audio')[0].volume = document.getElementsByClassName('vol')[0].value /100;
     Music.stroke.volume = document.getElementsByClassName('vol')[0].value /100;
     Music.whoosh.volume = document.getElementsByClassName('vol')[0].value /100;
@@ -62,16 +62,9 @@ function openMusicModal(){
 
     animateTitle();
   });
-  noMusicBtn.addEventListener('click', closeModal);
   noMusicBtn.addEventListener('click', () =>{
-    Music.muteAll();
-    console.log(Music.muted);
-    document.getElementsByTagName('audio')[0].volume = 0;
-    Music.stroke.volume = 0;
-    Music.lostBoardsSound.volume = 0;
-    Music.whoosh.volume = 0;
-    document.getElementsByClassName('vol')[0].value = 0;
-    
+    document.getElementsByClassName('vol')[0].value = 10;
+    closeModal();
     animateTitle();
   });
 

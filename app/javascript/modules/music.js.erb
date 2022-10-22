@@ -4,7 +4,7 @@ const stroke = new Audio('<%= asset_path("pen-stroke2.mp3") %>');
 const lostBoardsSound = new Audio('<%= asset_path("board-lost.mp3") %>');
 const whoosh = new Audio('<%= asset_path("whoosh.mp3") %>');
 
-let muted= false
+let muted= true
 
 function playSound(sound){
   if(muted === false){
