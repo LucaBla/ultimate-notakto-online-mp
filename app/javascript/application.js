@@ -17,14 +17,7 @@ if (window.location.pathname === '/'){
   ModalManager.openMusicModal();
 }
 else{
-  ModalManager.animateTitle();
-  document.getElementsByTagName('audio')[0].volume = document.getElementsByClassName('vol')[0].value /100;
-  document.getElementsByClassName('menu')[0].getElementsByClassName('buttons')[0].style.display = 'none';
-  document.getElementsByTagName('header')[0].style.zIndex= '10000';
-  document.getElementsByClassName('menu')[0].style.zIndex= '10000';
-  if(document.getElementById("link-copy-button") != undefined){
-        document.getElementById("link-copy-button").addEventListener("click", copyLink);
-  }
+  setUpRoom();
 }
 changeMobileWidget();
 
@@ -64,6 +57,15 @@ function handleVisibilityChange() {
     document.getElementsByTagName('audio')[0].pause();
   } else if(Music.muted === false){
     Music.playSound(document.getElementsByTagName('audio')[0]);
+  }
+}
+
+function setUpRoom(){
+  ModalManager.animateTitle();
+  document.getElementsByTagName('audio')[0].volume = document.getElementsByClassName('vol')[0].value /100;
+  document.getElementsByClassName('menu')[0].getElementsByClassName('buttons')[0].style.display = 'none';
+  if(document.getElementById("link-copy-button") != undefined){
+    document.getElementById("link-copy-button").addEventListener("click", copyLink);
   }
 }
 

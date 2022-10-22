@@ -24,10 +24,19 @@ class Room < ApplicationRecord
     save!
   end
 
-  def get_winner(active_user)
+  def get_next_player(active_user)
     return player2 if active_user == player1
 
     player1
+  end
+
+  def get_next_player_num
+    if active_player == player1
+      player_num = 1
+    else
+      player_num = 2
+    end
+    player_num
   end
 
   def set_starting_player
@@ -35,6 +44,7 @@ class Room < ApplicationRecord
     if player == 'random'
       player = rand(1..2)
     end
+
     self.active_player = player1 if player == 1 || player == '1'
     self.active_player = player2 if player == 2 || player == '2'
   end
@@ -73,8 +83,6 @@ class Room < ApplicationRecord
 
       sub_board.save!
     end
-    #self.adjusted = false removed until there is a settings modal after resetting
-    self.reseted = true
   end
 
   def game_over?

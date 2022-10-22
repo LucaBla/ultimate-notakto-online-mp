@@ -17,13 +17,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_16_231433) do
   create_table "rooms", force: :cascade do |t|
     t.string "code"
     t.json "state"
-    t.integer "player_count"
+    t.integer "player_count", default: 0
     t.integer "player1"
     t.integer "player2"
     t.integer "active_player"
-    t.string "starting_player"
-    t.boolean "adjusted"
-    t.boolean "reseted", default: false
+    t.string "starting_player", default: "1"
+    t.boolean "adjusted", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -39,8 +38,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_16_231433) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.integer "player_num"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

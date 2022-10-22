@@ -5,6 +5,8 @@ import {startConfetti, stopConfetti} from '../confetti/confetti.js';
 
 const displayController = (() => {
 
+  const boardWrapper = document.getElementsByClassName('board-wrapper')[0];
+
   const hideAfterTime = async () =>{
     await new Promise(resolve => setTimeout(resolve, 1200));
     document.getElementsByClassName('menu')[0].classList.add('hidden');
@@ -188,10 +190,31 @@ const displayController = (() => {
     playableSubBoards.forEach(element => element.classList.replace('playable', 'ph'));
   };
 
+  const enableMPSubmit = () =>{
+    const submitModal = document.getElementsByClassName("submit-modal")[0];
+    submitModal.disabled = false;
+    submitModal.classList.remove('disabled');
+  }
+
+  const resetMPBoard = (data, activePlayerLabel, userId) =>{
+    Music.playDreaming();
+    boardWrapper.innerHTML = data.html;
+    showActivePlayerLabel();
+    activePlayerLabel.innerHTML = 'Player ' + data.starting_player + 's turn'
+    if(userId != document.getElementsByClassName('board')[0].getAttribute('data-active-player')){
+      document.getElementsByClassName('board')[0].classList.add('click-forbidden')
+    }
+    removeGameOverScreen();
+    showActivePlayerLabel();
+    if(document.getElementsByClassName('replay-btn').length != 0){
+      document.getElementsByClassName('replay-btn')[0].remove()
+    }
+  }
+
   return {
     hideBtns, showBtns, hideWave, showWave, showActivePlayerLabel, hideActivePlayerLabel, reloadActivePlayerLabel,
     addPieceToHTML, closeSubBoard, showPlayableBoard, removePlayableBoard, showGameOverScreen, showGameOverScreenMP, 
-    removeGameOverScreen, removeSubBoardBorders
+    removeGameOverScreen, removeSubBoardBorders, enableMPSubmit, resetMPBoard
   };
 
 })();
