@@ -1038,6 +1038,7 @@ h2.animate__animated.animate__tada{
   .title img{
     width: 25px;
     height: 25px;
+    margin-bottom: 0px;
   }
   .active-player-label{
     margin-top: 3px;
