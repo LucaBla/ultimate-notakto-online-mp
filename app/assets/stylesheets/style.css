@@ -1040,6 +1040,25 @@ h2.animate__animated.animate__tada{
     height: 25px;
     margin-bottom: 0px;
   }
+  .modal{
+    padding: 20px;
+  }
+  .modal h2{
+    font-size: 18px;
+    margin-top: 1px;
+    margin-bottom: 10px;
+  }
+  .modal form input{
+    font-size: 16px;
+    padding: 5px 10px;
+  }
+  .modal form form button{
+    font-size: 16px;
+    padding: 5px 10px;
+  }
+  .modal form div:not(:last-child) {
+    margin-bottom: 10px;
+}
   .active-player-label{
     margin-top: 3px;
   }
@@ -1089,16 +1108,13 @@ h2.animate__animated.animate__tada{
   .play-btn{
     width: 70px;
     font-size: 3vh;
-    padding: 1.5vh 0px;
   }
   .rules-btn{
     width: 70px;
     font-size: 3vh;
-    padding: 1.5vh 0px;
   }
   .replay-btn{
     font-size: 3vh;
-    padding: 2px 1px;
   }
 }
 
