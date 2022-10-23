@@ -3,7 +3,7 @@
 ## Description
 Ultimate Notakto is a tic-tac-toe variant that combines <b>Notakto</b> and <b>Ultimate tic-tac-toe</b>. </br>
 What makes <b>Notakto</b> special is that <b>both players</b> play the <b>same piece (X)</b>.</br>
-Because its also has features of <b>ultimate tic-tac-toe</b> the game is <b>divided into 9 sub-boards</b>. </br>
+The game is <b>divided into 9 sub-boards</b>. </br>
 <b>Players</b> always have to <b>play</b> the <b>sub-board corresponding</b> to the field the <b>last piece</b> was placed.</br>
 </br>
 (<b>Example</b>: if player one places his piece into a bottom left field, the next player must place his piece in the bottom left sub-board)</br>
