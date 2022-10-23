@@ -12,7 +12,7 @@ A sub-board is <b>lost</b> if a player makes a <b>three-in-a-row</b> there.</br>
 If three lost <b>sub-boards</b> are in a row, the player that placed the <b>last piece</b> loses the game.
 
 ## The Game
-Link to [ultimate-notakto](https://ultimate-notakto.com) <br/>
+Link to [ultimate-notakto](https://www.ultimate-notakto.com/) <br/>
 
 ## Screenshots
 <img src='preview_imgs/screenshot1.png'>
