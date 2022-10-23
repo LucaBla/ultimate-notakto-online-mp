@@ -322,6 +322,12 @@ margin-right: 35px;
   width: 100px;
 }
 
+.credits-btn{
+  font-size: 12px !important;
+  width: fit-content;
+  font-weight: bold;
+}
+
 .replay-btn{
   border-radius: 8px;
   border: none;
@@ -489,7 +495,7 @@ table a{
 
 .btn-wrapper{
   display: flex;
-  gap: 50px;
+  gap: 30px;
   margin-top: 40px;
 }
 
@@ -720,6 +726,9 @@ h2.animate__animated.animate__tada{
   table td{
     font-size: 14px;
     padding: 10px 8px;
+  }
+  .credits-btn{
+    padding: 10px 5px !important;
   }
 }
 
