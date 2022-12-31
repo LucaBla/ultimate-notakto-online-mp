@@ -24,6 +24,7 @@ default: &default
 development:
   <<: *default
   database: ultimate_notakto_online_mp_development
+  schema_search_path: ultimate_notakto, public
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -84,3 +85,4 @@ production:
   database: ultimate_notakto_online_mp_production
   username: ultimate_notakto_online_mp
   password: <%= ENV["ULTIMATE_NOTAKTO_ONLINE_MP_DATABASE_PASSWORD"] %>
+  schema_search_path: ultimate_notakto, public
