@@ -15,12 +15,12 @@ If three lost <b>sub-boards</b> are in a row, the player that placed the <b>last
 Link to [ultimate-notakto](https://www.ultimate-notakto.com/) <br/>
 
 ## Screenshots
-<img src='preview_imgs/screenshot1.png'>
+<img src='preview_imgs/Screenshot1.png'>
 <br/>
-<img src='preview_imgs/screenshot2.png'>
+<img src='preview_imgs/Screenshot2.png'>
 <br/>
-<img src='preview_imgs/screenshot3.png'>
+<img src='preview_imgs/Screenshot3.png'>
 <br/>
-<img src='preview_imgs/screenshot4.png'>
+<img src='preview_imgs/Screenshot4.png'>
 <br/>
-<img src='preview_imgs/screenshot5.png'>
+<img src='preview_imgs/Screenshot5.png'>
