@@ -10,3 +10,5 @@ production:
   adapter: redis
   url: <%= ENV.fetch("REDIS_URL") %>/<%= ENV.fetch("REDIS_DB") %>
   channel_prefix: ultimate_notakto_online_mp_production
+  ssl_params:
+    verify_mode: <%= OpenSSL::SSL::VERIFY_NONE %>
